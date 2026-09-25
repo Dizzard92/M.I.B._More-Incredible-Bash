@@ -17,7 +17,9 @@ OUT="dist/MIB-$VERSION.zip"
 mkdir -p dist
 git archive --format=zip --worktree-attributes -o "$OUT" "$REV"
 
-leaked="$(python3 -m zipfile -l "$OUT" | awk '{print $1}' | grep -E '^(dev|tests|\.agent|\.github)/' || true)"
+names="$(python3 -c 'import sys, zipfile; print("\n".join(zipfile.ZipFile(sys.argv[1]).namelist()))' "$OUT")"
+
+leaked="$(grep -E '^(dev|tests|\.agent|\.github)/' <<< "$names" || true)"
 if [ -n "$leaked" ]; then
 	echo "error: developer files in package:" >&2
 	echo "$leaked" >&2
@@ -25,10 +27,10 @@ if [ -n "$leaked" ]; then
 fi
 
 for required in start VERSION metainfo2.txt Launcher/final/finalScript.sh esd/Launcher-sda0.esd apps/flash; do
-	if ! python3 -m zipfile -l "$OUT" | awk '{print $1}' | grep -qx "$required"; then
+	if ! grep -qxF "$required" <<< "$names"; then
 		echo "error: $required missing from package" >&2
 		exit 1
 	fi
 done
 
-echo "$OUT ($(python3 -m zipfile -l "$OUT" | tail -n +2 | wc -l) files)"
+echo "$OUT ($(grep -vc '/$' <<< "$names") files)"

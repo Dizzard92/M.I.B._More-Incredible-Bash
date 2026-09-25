@@ -21,8 +21,8 @@ For the person in the car, nothing changes except where this plan deliberately f
 - [x] (2026-09-25 16:20Z) Ran ShellCheck 0.10.0 over all shell sources as a baseline: 3,444 findings (4 parse errors, 240 warnings, 3,200 notes). The details are in `Surprises & Discoveries`.
 - [x] (2026-09-25 16:30Z) Prototyped the head-unit simulator idea: an unprivileged Linux user and mount namespace can present the repository at `/net/mmx/fs/sda0` inside a `chroot` without changing any script. Evidence is in `Artifacts and Notes`.
 - [x] (2026-09-25 16:40Z) Wrote this ExecPlan.
-- [ ] Milestone 0: baseline tag, branch strategy, archive of `beta`, upstream remote.
-- [ ] Milestone 1: developer tooling, the `dev/` folder, packaging exclusions, and a ShellCheck ratchet.
+- [x] (2026-09-25 18:00Z) Milestone 0: local tags `baseline/pre-refactor` (`3f3caeb`) and `archive/beta-2022-11` (`144bf83`) exist, remote `upstream` was added and fetched (`main` equals `upstream/main`, 0/0), branch `refactor/core` was created, and `dev/NOTES-beta.md` was written. Tags are NOT pushed; that is waiting for the owner's approval.
+- [x] (2026-09-25 18:10Z) Milestone 1: `dev/README.md`, `dev/tools/install-deps.sh` (local install into `dev/.tools/`, no root), `dev/tools/shell-sources.sh` (150 files), `dev/tools/lint.sh` with the baseline `dev/lint/shellcheck-baseline.txt` (3,444 findings), `dev/tools/package.sh`, the `export-ignore` entries in `.gitattributes`, and `.gitignore` entries. Verified: lint exits 0 on the unchanged tree; an injected finding fails the run with "5 new"; the package has 292 files, no dev files, unchanged frozen checksums, CRLF for `metainfo2.txt` and the ESD files, LF for the apps.
 - [ ] Milestone 2 (prototyping): head-unit simulator `dev/sim/mibsim` with stubs and two unit fixtures (MHI2 and MHIG).
 - [ ] Milestone 3: characterization ("golden master") tests for every menu entry and every `start` option.
 - [ ] Milestone 4: shared library `lib/` (environment, logging, locking, unit identity, UI, help text), plus compatibility shims in `config/`.
@@ -70,6 +70,18 @@ For the person in the car, nothing changes except where this plan deliberately f
 - Observation: every binary in `apps/sbin/` is a 32-bit ARM QNX executable. None of them can run on a development PC. `apps/sbin/beta/` holds newer, statically linked builds plus `micropython`, which only the experimental `apps/beta` script uses.
   Evidence: `file apps/sbin/*` reports "ELF 32-bit LSB executable, ARM, EABI5 ... interpreter /usr/lib/ldqnx.so".
 
+- Observation: the development machine has no password-less `sudo`, so `apt-get install` is not available to an agent. `apt-get download` plus `dpkg-deb -x` works without root, and so does a checksum-pinned ShellCheck release tarball. `install-deps.sh` therefore installs into `dev/.tools/` instead of the system.
+  Evidence: `sudo -n true` prints "sudo: a password is required". `dev/tools/install-deps.sh` prints mksh R59, shellcheck 0.10.0, bc 1.07.1, and xxd 2021-10-22.
+
+- Observation: `export-ignore` also affects the "Download ZIP" button on GitHub, which uses `git archive`. That is how most users get M.I.B. Since Milestone 1, those downloads no longer contain `tests/`, `.agent/`, or `.github/`. This is intended, and nothing on the unit referenced them.
+  Evidence: `grep -rn "tests/\|\.agent\|\.github" apps config esd start Launcher` finds nothing.
+
+- Observation: `.agent/AGENTS.md` and `.agent/PLANS.md` exist only in the working copy (untracked). This plan, `.agent/execplans/mib-refactor.md`, is committed. A future contributor who clones the repository gets the plan but not `PLANS.md` unless the owner commits it.
+  Evidence: `git status --short` shows `?? .agent/AGENTS.md` and `?? .agent/PLANS.md`.
+
+- Observation: in bash with `set -o pipefail`, `producer | grep -q` can fail when `grep` exits early and the producer (here `python3 -m zipfile -l`) gets SIGPIPE. `package.sh` therefore reads the zip listing once into a variable.
+  Evidence: the first run printed "error: VERSION missing from package" and a Python `BrokenPipeError`, although `VERSION` was in the zip.
+
 - Observation: the head-unit paths can be simulated on Linux without root and without editing any script, using `unshare --user --map-root-user --mount` plus `chroot`. This is the foundation for Milestones 2 and 3.
   Evidence: see "Simulator feasibility prototype" in `Artifacts and Notes`.
 
@@ -112,6 +124,14 @@ For the person in the car, nothing changes except where this plan deliberately f
   Rationale: `mksh` is the closest living descendant of the public-domain Korn shell that QNX ships. Bash accepts far more than the unit does, so `bash -n` (used by the current `tests/`) gives false confidence. No existing script uses `local` (verified with grep), so the rule costs nothing.
   Date/Author: 2026-09-25, Claude.
 
+- Decision: developer tools are installed per checkout into `dev/.tools/` (git-ignored) by `dev/tools/install-deps.sh`, and the dev scripts prepend `dev/.tools/bin` to `PATH`. A system-wide `apt-get install` is not required. The ShellCheck version is pinned (0.10.0) and its tarball is verified with SHA-256.
+  Rationale: agents and contributors cannot rely on root access (see `Surprises & Discoveries`). A pinned version keeps the ratchet baseline stable, because different ShellCheck versions report different findings.
+  Date/Author: 2026-09-25, Claude.
+
+- Decision: `Launcher/final/finalScript.sh` is included in lint (read-only). ShellCheck findings in it are accepted permanently, because the file is frozen.
+  Rationale: syntax problems there would break installation, so checking it costs nothing. It can never be edited.
+  Date/Author: 2026-09-25, Claude.
+
 - Decision: plan documents are written in English.
   Rationale: `.agent/PLANS.md`, the code comments, the README, and the international contributor base are English.
   Date/Author: 2026-09-25, Claude.
@@ -119,7 +139,9 @@ For the person in the car, nothing changes except where this plan deliberately f
 
 ## Outcomes & Retrospective
 
-Planning complete (2026-09-25). No code has been changed yet. The main risk identified is that the refactor could silently change which commands reach the unit. The characterization harness (Milestones 2 and 3) is the mitigation and must be finished before any production file is edited. Update this section at the end of every milestone.
+Milestones 0 and 1 are complete (2026-09-25). The tree can now be linted (`dev/tools/lint.sh`, 150 files, 0 syntax errors, ShellCheck ratchet at 3,444) and packaged (`dev/tools/package.sh`) reproducibly without root. No head-unit code was changed. Next is Milestone 2, the simulator.
+
+Planning complete (2026-09-25). The main risk identified is that the refactor could silently change which commands reach the unit. The characterization harness (Milestones 2 and 3) is the mitigation and must be finished before any production file is edited. Update this section at the end of every milestone.
 
 
 ## Context and Orientation
@@ -310,7 +332,7 @@ Push the tags (`git push origin baseline/pre-refactor archive/beta-2022-11`) onl
 
 Milestone 1 (after writing the scripts described in Plan of Work):
 
-    sudo dev/tools/install-deps.sh
+    dev/tools/install-deps.sh               # installs into dev/.tools/, no root needed
     dev/tools/lint.sh --update-baseline      # once, on the unchanged code; commit dev/lint/shellcheck-baseline.txt
     dev/tools/lint.sh
 
@@ -320,7 +342,7 @@ Expected output on an unchanged tree:
     shellcheck: 3444 findings, 0 new, 0 fixed (baseline 3444)
     OK
 
-The file count (150 here) depends on the final file list. Record the real number in `Artifacts and Notes`.
+The file count was 150 at `3f3caeb` plus Milestone 1.
 
 Packaging:
 
