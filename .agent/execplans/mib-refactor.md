@@ -21,7 +21,7 @@ For the person in the car, nothing changes except where this plan deliberately f
 - [x] (2026-09-25 16:20Z) Ran ShellCheck 0.10.0 over all shell sources as a baseline: 3,444 findings (4 parse errors, 240 warnings, 3,200 notes). The details are in `Surprises & Discoveries`.
 - [x] (2026-09-25 16:30Z) Prototyped the head-unit simulator idea: an unprivileged Linux user and mount namespace can present the repository at `/net/mmx/fs/sda0` inside a `chroot` without changing any script. Evidence is in `Artifacts and Notes`.
 - [x] (2026-09-25 16:40Z) Wrote this ExecPlan.
-- [x] (2026-09-25 18:00Z) Milestone 0: local tags `baseline/pre-refactor` (`3f3caeb`) and `archive/beta-2022-11` (`144bf83`) exist, remote `upstream` was added and fetched (`main` equals `upstream/main`, 0/0), branch `refactor/core` was created, and `dev/NOTES-beta.md` was written. Tags are NOT pushed; that is waiting for the owner's approval.
+- [x] (2026-09-25 18:00Z) Milestone 0: local tags `baseline/pre-refactor` (`3f3caeb`) and `archive/beta-2022-11` (`144bf83`) exist, remote `upstream` was added and fetched (`main` equals `upstream/main`, 0/0), branch `refactor/core` was created, and `dev/NOTES-beta.md` was written. The owner approved pushing the tags to origin (the Dizzard92 fork); the push is pending because this environment has no GitHub credentials.
 - [x] (2026-09-25 18:10Z) Milestone 1: `dev/README.md`, `dev/tools/install-deps.sh` (local install into `dev/.tools/`, no root), `dev/tools/shell-sources.sh` (150 files), `dev/tools/lint.sh` with the baseline `dev/lint/shellcheck-baseline.txt` (3,444 findings), `dev/tools/package.sh`, the `export-ignore` entries in `.gitattributes`, and `.gitignore` entries. Verified: lint exits 0 on the unchanged tree; an injected finding fails the run with "5 new"; the package has 292 files, no dev files, unchanged frozen checksums, CRLF for `metainfo2.txt` and the ESD files, LF for the apps.
 - [ ] Milestone 2 (prototyping): head-unit simulator `dev/sim/mibsim` with stubs and two unit fixtures (MHI2 and MHIG).
 - [ ] Milestone 3: characterization ("golden master") tests for every menu entry and every `start` option.
@@ -77,7 +77,10 @@ For the person in the car, nothing changes except where this plan deliberately f
   Evidence: `grep -rn "tests/\|\.agent\|\.github" apps config esd start Launcher` finds nothing.
 
 - Observation: `.agent/AGENTS.md` and `.agent/PLANS.md` exist only in the working copy (untracked). This plan, `.agent/execplans/mib-refactor.md`, is committed. A future contributor who clones the repository gets the plan but not `PLANS.md` unless the owner commits it.
-  Evidence: `git status --short` shows `?? .agent/AGENTS.md` and `?? .agent/PLANS.md`.
+  Evidence: `git status --short` shows `?? .agent/AGENTS.md` and `?? .agent/PLANS.md`. Resolved on 2026-09-25: the owner approved it, and both files were committed in `8076b25`.
+
+- Observation: this environment cannot push to GitHub. There is no `gh` CLI and no HTTPS credential helper, and GitHub rejects the SSH key (`Permission denied (publickey)`). The owner approved pushing the tags to the fork `https://github.com/Dizzard92/M.I.B._More-Incredible-Bash.git`, but the push has to be run by the owner.
+  Evidence: `git push https://github.com/Dizzard92/... refs/tags/...` prints "fatal: could not read Username for 'https://github.com'".
 
 - Observation: in bash with `set -o pipefail`, `producer | grep -q` can fail when `grep` exits early and the producer (here `python3 -m zipfile -l`) gets SIGPIPE. `package.sh` therefore reads the zip listing once into a variable.
   Evidence: the first run printed "error: VERSION missing from package" and a Python `BrokenPipeError`, although `VERSION` was in the zip.
