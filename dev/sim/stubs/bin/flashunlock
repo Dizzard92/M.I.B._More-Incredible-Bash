@@ -1,0 +1,5 @@
+#!/bin/bash
+. /sim/stubs/journal.sh
+journal flashunlock "$@"
+cat $PROFILE/flashlock.txt 2>/dev/null
+exit 0

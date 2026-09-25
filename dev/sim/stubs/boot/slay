@@ -1,0 +1,5 @@
+#!/bin/bash
+# QNX "slay": kill processes by name (apps/reboot restarts MHIG with "slay -f j9").
+. /sim/stubs/journal.sh
+journal slay "$@"
+exit 0

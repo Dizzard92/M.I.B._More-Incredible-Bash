@@ -1,0 +1,7 @@
+#!/bin/bash
+# dumb_persistence_writer <ns> <key> <value...>
+. /sim/stubs/journal.sh
+journal dumb_persistence_writer "$@"
+mkdir -p "$PROFILE/persistence/persr"
+ns="$1" key="$2"; shift 2
+echo "$*" > "$PROFILE/persistence/persr/${ns}_${key}"

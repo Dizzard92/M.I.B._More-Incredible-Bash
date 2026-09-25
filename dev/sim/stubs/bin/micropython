@@ -1,0 +1,4 @@
+#!/bin/bash
+. /sim/stubs/journal.sh
+journal micropython "$@"
+exit 0

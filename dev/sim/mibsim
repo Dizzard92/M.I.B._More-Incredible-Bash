@@ -1,0 +1,250 @@
+#!/usr/bin/env bash
+# mibsim - run M.I.B. scripts against a simulated head unit (no root, no hardware).
+#
+# The command runs inside an unprivileged user+mount namespace and a chroot whose file
+# system looks like the unit: the SD card at /net/mmx/fs/sda0, the RCC at /net/rcc/...,
+# QNX tools (on, mount, top, slay, ...) as stubs in /proc/boot, /bin/sh = mksh.
+# The ARM binaries in apps/sbin are replaced in the simulated SD card by host tools or stubs.
+# Every command that would change the unit is recorded in the journal.
+#
+# Usage:
+#   dev/sim/mibsim [options] -- <command> [args...]
+#
+# Options:
+#   --profile <name>   dev/sim/profiles/<name>/profile.ini (default: mhi2)
+#   --node mmx|rcc     where the command "runs"; rcc creates /usr/apps/MIBRoot (default: mmx)
+#   --rev <commit>     take the SD card content from a commit instead of the working tree
+#   --out <dir>        result folder (default: dev/sim/out/<timestamp>-<pid>, linked as dev/sim/out/latest)
+#   --setup <script>   host-side bash script run after preparation and before the snapshot;
+#                      it gets SIM_OUT, SIM_SD, SIM_UNIT, SIM_PROFILE and the PROFILE_* variables
+#   --stdin <file>     standard input for the command (default: empty)
+#   --timeout <sec>    kill the command after this many seconds (default: 600)
+#
+# Result folder:
+#   stdout, stderr, exit   what the command printed and its exit status
+#   journal                one line per unit-changing command (tab-separated)
+#   log                    the M.I.B. log file(s) from the SD card backup folder
+#   changes                files added (+), modified (~) or removed (-) on the SD card and the unit
+#   sd/, unit/, sim/       the simulated SD card, unit file system and profile after the run
+
+set -euo pipefail
+
+SIM_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ROOT="$(cd "$SIM_DIR/../.." && pwd)"
+
+die() { echo "mibsim: $*" >&2; exit 2; }
+
+# ------------------------------------------------------------------------------------------
+# Inner phase: runs as "root" inside the new user+mount namespace.
+# ------------------------------------------------------------------------------------------
+inner() {
+	local out="$1" node="$2" timeout="$3" stdin="$4"
+	shift 4
+	local R="$out/root"
+	mkdir -p "$R"
+	mount -t tmpfs -o mode=0755 sim-root "$R"
+
+	# /usr: the host's /usr is mounted at /.host/usr; /usr is a tmpfs of symlinks into it,
+	# so files can be added to /usr/bin and /usr/apps without touching the host.
+	mkdir -p "$R/.host/usr" "$R/usr"
+	mount --rbind /usr "$R/.host/usr"
+	local e f
+	for e in /usr/*; do
+		e="$(basename "$e")"
+		if [ "$e" = bin ]; then
+			mkdir "$R/usr/bin"
+			for f in /usr/bin/*; do
+				ln -s "/.host/usr/bin/$(basename "$f")" "$R/usr/bin/$(basename "$f")"
+			done
+		else
+			ln -s "/.host/usr/$e" "$R/usr/$e"
+		fi
+	done
+	for e in bin sbin lib lib32 lib64 libx32; do
+		if [ -L "/$e" ]; then
+			ln -s "$(readlink "/$e")" "$R/$e"
+		elif [ -d "/$e" ]; then
+			mkdir -p "$R/$e"
+			mount --rbind "/$e" "$R/$e"
+		fi
+	done
+	mkdir -p "$R/etc" "$R/dev" "$R/tmp" "$R/opt/sim/bin" "$R/proc/boot" "$R/sim" "$R/net" "$R/usr/apps"
+	mount --rbind /etc "$R/etc"
+	mount --rbind /dev "$R/dev"
+
+	# reference shell and tools that may be missing on the host
+	cp "$(readlink -f "$ROOT/dev/.tools/bin/mksh")" "$R/opt/sim/bin/mksh"
+	cp "$(readlink -f "$ROOT/dev/.tools/bin/bc")" "$R/opt/sim/bin/bc"
+	ln -sf /opt/sim/bin/mksh "$R/usr/bin/sh"
+	ln -sf /opt/sim/bin/mksh "$R/usr/bin/ksh"
+	if [ -e /usr/bin/gawk ]; then
+		ln -sf /.host/usr/bin/gawk "$R/usr/bin/awk"
+	fi
+
+	# QNX system commands and RCC-local tools
+	cp "$SIM_DIR"/stubs/boot/* "$R/proc/boot/"
+	ln -s /sim/stubs/modifyE2P "$R/usr/apps/modifyE2P"
+	ln -s /sim/stubs/mib2_ioc_flash "$R/usr/apps/mib2_ioc_flash"
+	if [ -f "$out/sim/profile/flashlock.txt" ]; then
+		ln -s /sim/stubs/flashlock "$R/usr/bin/flashlock"
+	fi
+	if [ "$node" = rcc ]; then
+		touch "$R/usr/apps/MIBRoot"
+	fi
+
+	mount --bind "$out/sim" "$R/sim"
+	mount --bind "$out/unit" "$R/net"
+	mount --bind "$out/sd" "$R/net/mmx/fs/sda0"
+
+	local rc=0
+	chroot "$R" /usr/bin/env -i \
+		PATH=/proc/boot:/usr/bin:/bin HOME=/ TERM=dumb LANG=C LC_ALL=C TZ=UTC \
+		/usr/bin/timeout "$timeout" /bin/sh -c 'cd /; exec "$@"' mibsim "$@" \
+		< "$stdin" > "$out/stdout" 2> "$out/stderr" || rc=$?
+	echo "$rc" > "$out/exit"
+}
+
+if [ "${1:-}" = "--inner" ]; then
+	shift
+	inner "$@"
+	exit 0
+fi
+
+# ------------------------------------------------------------------------------------------
+# Host phase
+# ------------------------------------------------------------------------------------------
+profile="mhi2" node="mmx" rev="" out="" setup="" stdin="/dev/null" timeout="600"
+while [ $# -gt 0 ]; do
+	case "$1" in
+		--profile) profile="$2"; shift 2 ;;
+		--node) node="$2"; shift 2 ;;
+		--rev) rev="$2"; shift 2 ;;
+		--out) out="$2"; shift 2 ;;
+		--setup) setup="$2"; shift 2 ;;
+		--stdin) stdin="$2"; shift 2 ;;
+		--timeout) timeout="$2"; shift 2 ;;
+		--) shift; break ;;
+		-h|--help) sed -n '2,/^$/p' "$0" | sed 's/^# \{0,1\}//'; exit 0 ;;
+		*) die "unknown option $1 (use --help)" ;;
+	esac
+done
+[ $# -gt 0 ] || die "no command given (use --help)"
+[ "$node" = mmx ] || [ "$node" = rcc ] || die "--node must be mmx or rcc"
+ini="$SIM_DIR/profiles/$profile/profile.ini"
+[ -f "$ini" ] || die "profile $profile not found ($ini)"
+for t in mksh bc; do
+	[ -x "$ROOT/dev/.tools/bin/$t" ] || die "$t missing - run dev/tools/install-deps.sh"
+done
+stdin="$(readlink -f "$stdin")"
+
+if [ -z "$out" ]; then
+	out="$SIM_DIR/out/$(date +%Y%m%d-%H%M%S)-$$"
+	mkdir -p "$SIM_DIR/out"
+	ln -sfn "$(basename "$out")" "$SIM_DIR/out/latest"
+fi
+[ ! -e "$out" ] || [ -z "$(ls -A "$out")" ] || die "result folder $out is not empty"
+mkdir -p "$out/sd" "$out/unit" "$out/sim"
+out="$(cd "$out" && pwd)"
+
+# --- SD card ------------------------------------------------------------------------------
+if [ -n "$rev" ]; then
+	git -C "$ROOT" archive "$rev" | tar -x -C "$out/sd"
+else
+	(cd "$ROOT" && git ls-files -z -co --exclude-standard) \
+		| tr '\0' '\n' | grep -vE '^(dev|tests|\.agent|\.github|dist)/' | tr '\n' '\0' \
+		| (cd "$ROOT" && tar --null -T - -cf -) | tar -x -C "$out/sd"
+fi
+rm -rf "$out/sd/dev" "$out/sd/tests" "$out/sd/.agent" "$out/sd/.github" "$out/sd/dist"
+# FAT32 has no permission bits; on the unit every file on the SD card is executable.
+chmod -R a+rX,u+w "$out/sd"
+find "$out/sd" -type f -exec chmod a+x {} +
+
+# Replace the ARM binaries with host tools or stubs.
+for f in "$out"/sd/apps/sbin/* "$out"/sd/apps/sbin/beta/*; do
+	[ -f "$f" ] || continue
+	name="$(basename "$f")"
+	case "$name" in
+		sed|xxd|dd|cut|tee|gzip|sha1sum) target="/usr/bin/$name" ;;
+		bc) target="/opt/sim/bin/bc" ;;
+		flashit|flashlock|flashunlock|pc|dumb_persistence_reader|updatePersistence|patcher|rdiff|micropython)
+			target="/sim/stubs/$name" ;;
+		*) die "no simulator replacement for apps/sbin binary '$name' - add one to dev/sim/mibsim" ;;
+	esac
+	printf '#!/bin/bash\n# mibsim replacement for the ARM binary %s\nexec %s "$@"\n' "$name" "$target" > "$f"
+	chmod +x "$f"
+done
+
+# --- Profile and stubs ------------------------------------------------------------------------
+mkdir -p "$out/sim/profile" "$out/sim/stubs"
+python3 "$SIM_DIR/make-profile.py" "$ini" "$out/sim/profile"
+cp "$SIM_DIR"/stubs/bin/* "$SIM_DIR/stubs/journal.sh" "$SIM_DIR/stubs/journal.py" "$SIM_DIR/lib/ifs.py" "$out/sim/stubs/"
+: > "$out/sim/journal"
+# shellcheck disable=SC1091
+. "$out/sim/profile/profile.env"
+echo "$PROFILE_FREE_RAM_MB" > "$out/sim/profile/free_ram_mb"
+if [ -f "$out/sim/profile/mhig_db_row.csv" ] && [ -f "$out/sd/patches/MHIG_patch_db.csv" ]; then
+	cat "$out/sim/profile/mhig_db_row.csv" >> "$out/sd/patches/MHIG_patch_db.csv"
+fi
+
+# --- Unit file system (becomes /net) -------------------------------------------------------------
+U="$out/unit"
+mkdir -p "$U/mmx/fs/sda0" \
+	"$U/rcc/dev/shmem" "$U/rcc/tmp" "$U/rcc/usr/apps" "$U/rcc/usr/bin" \
+	"$U/rcc/mnt/efs-persist/FEC/archiv" "$U/rcc/mnt/efs-persist/SWDL/Log/service" \
+	"$U/rcc/mnt/efs-persist/SWDL/FileCopyInfo" "$U/rcc/mnt/efs-system/backup" \
+	"$U/mmx/mnt/app/eso/hmi/lsd/jars" "$U/mmx/mnt/app/eso/hmi/engdefs" "$U/mmx/mnt/app/eso/bin/apps" \
+	"$U/mmx/mnt/app/root" "$U/mmx/mnt/system/etc" "$U/mmx/mnt/boardbook" \
+	"$U/mmx/eso/bin/apps" "$U/mmx/eso/lib" "$U/mmx/dev" "$U/mmx/ifs"
+mv "$out/sim/profile/fs0.img" "$U/rcc/dev/fs0"
+ln "$U/rcc/dev/fs0" "$U/rcc/dev/fs0p0"
+cp "$out/sim/profile/version.txt" "$U/rcc/dev/shmem/version.txt"
+cp "$out/sim/profile/FecContainer.fec" "$U/rcc/mnt/efs-persist/FEC/FecContainer.fec"
+printf 'storage1' > "$U/rcc/mnt/efs-persist/storage1.raw"
+printf 'storage2' > "$U/rcc/mnt/efs-persist/storage2.raw"
+printf 'swdl' > "$U/rcc/mnt/efs-persist/SWDL/swdl.info"
+cp "$out/sim/profile/CfgAckRand.z" "$U/rcc/mnt/efs-persist/SWDL/Log/CfgAckRand.z"
+ln -s /sim/stubs/modifyE2P "$U/rcc/usr/apps/modifyE2P"
+ln -s /sim/stubs/mib2_ioc_flash "$U/rcc/usr/apps/mib2_ioc_flash"
+ln -s /sim/stubs/date "$U/rcc/usr/bin/date"
+ln -s /usr/bin/sha1sum "$U/rcc/usr/bin/sha1sum"
+[ "$PROFILE_FLASHLOCK" = yes ] && ln -s /sim/stubs/flashlock "$U/rcc/usr/bin/flashlock"
+cp "$out/sd/mod/gem/GEM412" "$U/mmx/mnt/app/eso/hmi/lsd/jars/GEM.jar"
+[ "$PROFILE_MODEL" = mhi2 ] && ln -s /sim/stubs/pc "$U/mmx/mnt/app/eso/bin/apps/pc"
+ln -s /sim/stubs/dumb_persistence_writer "$U/mmx/eso/bin/dumb_persistence_writer"
+ln -s /sim/stubs/dmdt "$U/mmx/eso/bin/apps/dmdt"
+ln -s /sim/stubs/loadandshowimage "$U/mmx/eso/bin/apps/loadandshowimage"
+printf 'mmx-fs0' > "$U/mmx/dev/fs0"
+printf 'lsd' > "$U/mmx/ifs/lsd.jxe"
+
+# --- Scenario setup --------------------------------------------------------------------------
+if [ -n "$setup" ]; then
+	SIM_OUT="$out" SIM_SD="$out/sd" SIM_UNIT="$U" SIM_PROFILE="$out/sim/profile" \
+		bash -c 'set -a; . "$SIM_PROFILE/profile.env"; set +a; . "$1"' mibsim-setup "$setup"
+fi
+
+# Fixed timestamps so "ls -l" output in the log is reproducible.
+find "$out/sd" "$U" -exec touch -h -d '2026-01-01 00:00:00 UTC' {} +
+
+snapshot() {
+	(cd "$out" && find sd unit -type f -print0 | LC_ALL=C sort -z | xargs -0r sha1sum
+	 cd "$out" && find sd unit -type l -printf '%p -> %l\n' | LC_ALL=C sort | sed 's/^/symlink  /')
+}
+snapshot > "$out/files.before"
+
+# --- Run -----------------------------------------------------------------------------------------
+unshare --user --map-root-user --mount --fork "$0" --inner "$out" "$node" "$timeout" "$stdin" "$@"
+
+snapshot > "$out/files.after"
+# lines are "<sha1|symlink>  <path>"; paths may contain spaces
+awk '
+	{ key = substr($0, index($0, "  ") + 2) }
+	FNR == NR { before[key] = $1; next }
+	          { after[key] = $1 }
+	END {
+		for (p in after) if (!(p in before)) print "+ " p; else if (before[p] != after[p]) print "~ " p
+		for (p in before) if (!(p in after)) print "- " p
+	}' "$out/files.before" "$out/files.after" | LC_ALL=C sort -k2 > "$out/changes"
+find "$out/sd/backup" -name '*-LOG.txt' -print0 2>/dev/null | LC_ALL=C sort -z | xargs -0r cat > "$out/log"
+ln -sfn sim/journal "$out/journal"
+
+echo "mibsim: exit $(cat "$out/exit") - results in ${out#"$ROOT"/}"

@@ -1,0 +1,10 @@
+#!/bin/bash
+# apps/sbin/pc <type:ns:key> [value]: persistence read (and write with a value).
+. /sim/stubs/journal.sh
+f="$PROFILE/persistence/pc/${1//:/_}"
+if [ $# -gt 1 ]; then
+	journal pc "$@"
+	mkdir -p "$(dirname "$f")"; shift; echo "$*" > "$f"; exit 0
+fi
+[ -f "$f" ] || exit 1
+cat "$f"

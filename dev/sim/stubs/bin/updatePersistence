@@ -1,0 +1,23 @@
+#!/bin/bash
+# updatePersistence -key <k> -ns <ns> -type <t> [-value <v>]
+# Read prints the value in single quotes (apps/vim parses "s/^.*'\(.*\)'.*$/\1/p").
+. /sim/stubs/journal.sh
+key="" ns="0" type="" value="" has_value=""
+args=("$@")
+while [ $# -gt 0 ]; do
+	case "$1" in
+		-key) key="$2"; shift 2 ;;
+		-ns) ns="$2"; shift 2 ;;
+		-type) type="$2"; shift 2 ;;
+		-value) value="$2"; has_value=1; shift 2 ;;
+		*) shift ;;
+	esac
+done
+f="$PROFILE/persistence/udp/${ns}_${key}"
+if [ -n "$has_value" ]; then
+	journal updatePersistence "${args[@]}"
+	mkdir -p "$(dirname "$f")"; echo "$value" > "$f"
+	exit 0
+fi
+[ -f "$f" ] || { echo "key $key not found"; exit 1; }
+echo "key $key ns $ns type $type value '$(cat "$f")'"

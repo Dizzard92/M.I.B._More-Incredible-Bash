@@ -1,0 +1,6 @@
+#!/bin/bash
+# dumb_persistence_reader <ns> <key>
+. /sim/stubs/journal.sh
+f="$PROFILE/persistence/persr/${1}_${2}"
+[ -f "$f" ] || { echo "key $2 not found in namespace $1" >&2; exit 1; }
+cat "$f"

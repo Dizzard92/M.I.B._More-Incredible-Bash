@@ -1,0 +1,5 @@
+#!/bin/bash
+# /usr/apps/mib2_ioc_flash reboot|fastReboot
+. /sim/stubs/journal.sh
+journal mib2_ioc_flash "$@"
+exit 0

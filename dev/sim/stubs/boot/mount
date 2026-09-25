@@ -1,0 +1,12 @@
+#!/bin/bash
+# QNX "mount -uw|-ur <path>" remounts; the simulator only records it.
+# Without arguments, mount prints a fixed mount table.
+. /sim/stubs/journal.sh
+if [ $# -eq 0 ]; then
+	echo "/dev/fs0p1 on /mnt/efs-persist type flash"
+	echo "/dev/fs0p2 on /mnt/efs-system type flash"
+	echo "/dev/sda0 on /fs/sda0 type dos (fat32)"
+	exit 0
+fi
+journal mount "$@"
+exit 0

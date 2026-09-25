@@ -1,0 +1,7 @@
+#!/bin/bash
+# QNX "top -i 1"; apps/flash parses "<n>M avail" from the Memory line.
+. /sim/stubs/journal.sh
+ram="$(cat $PROFILE/free_ram_mb 2>/dev/null || echo 300)"
+echo "1 processes; 0 threads;"
+echo "CPU states: 1.0% user, 1.0% kernel"
+echo "Memory: 1024M total, ${ram}M avail, page size 4K"

@@ -1,0 +1,32 @@
+#!/bin/bash
+# apps/sbin/flashit -v -d -x -a <hexoffset> -p <device> -f <image>
+# Writes the image into the flash file. If /sim/profile/flashit.fail exists, one byte is
+# corrupted and the "programming" lines are shorter than the "erasing" lines, which is what
+# apps/flash's validation compares. Line format is inferred from that check (cut -b 54-177).
+. /sim/stubs/journal.sh
+journal flashit "$@"
+off="" dev="" img=""
+while [ $# -gt 0 ]; do
+	case "$1" in
+		-a) off="$2"; shift 2 ;;
+		-p) dev="$2"; shift 2 ;;
+		-f) img="$2"; shift 2 ;;
+		*) shift ;;
+	esac
+done
+[ -f "$img" ] || { echo "flashit: cannot open $img" >&2; exit 1; }
+pad="flashit (sim) ......................................"
+size=$(stat -c %s "$img")
+blocks=$(( (size + 65535) / 65536 ))
+for i in $(seq 0 $((blocks - 1))); do
+	printf '%s erasing     block %04d at 0x%08x\n' "$pad" "$i" $(( 0x$off + i * 65536 ))
+done
+dd if="$img" of="$dev" bs=4096 seek=$(( 0x$off / 4096 )) conv=notrunc status=none
+if [ -f $PROFILE/flashit.fail ]; then
+	printf '\xde' | dd of="$dev" bs=1 seek=$(( 0x$off + 100 )) conv=notrunc status=none
+	blocks=$((blocks - 1))
+fi
+for i in $(seq 0 $((blocks - 1))); do
+	printf '%s programming block %04d at 0x%08x\n' "$pad" "$i" $(( 0x$off + i * 65536 ))
+done
+exit 0

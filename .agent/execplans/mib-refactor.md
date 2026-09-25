@@ -23,7 +23,7 @@ For the person in the car, nothing changes except where this plan deliberately f
 - [x] (2026-09-25 16:40Z) Wrote this ExecPlan.
 - [x] (2026-09-25 18:00Z) Milestone 0: local tags `baseline/pre-refactor` (`3f3caeb`) and `archive/beta-2022-11` (`144bf83`) exist, remote `upstream` was added and fetched (`main` equals `upstream/main`, 0/0), branch `refactor/core` was created, and `dev/NOTES-beta.md` was written. Both tags were pushed to origin (the Dizzard92 fork) on 2026-09-25 after the owner approved it and authenticated `gh`.
 - [x] (2026-09-25 18:10Z) Milestone 1: `dev/README.md`, `dev/tools/install-deps.sh` (local install into `dev/.tools/`, no root), `dev/tools/shell-sources.sh` (150 files), `dev/tools/lint.sh` with the baseline `dev/lint/shellcheck-baseline.txt` (3,444 findings), `dev/tools/package.sh`, the `export-ignore` entries in `.gitattributes`, and `.gitignore` entries. Verified: lint exits 0 on the unchanged tree; an injected finding fails the run with "5 new"; the package has 292 files, no dev files, unchanged frozen checksums, CRLF for `metainfo2.txt` and the ESD files, LF for the apps.
-- [ ] Milestone 2 (prototyping): head-unit simulator `dev/sim/mibsim` with stubs and two unit fixtures (MHI2 and MHIG).
+- [x] (2026-09-25 18:30Z) Milestone 2 (prototyping, promoted): `dev/sim/mibsim`, `dev/sim/make-profile.py`, `dev/sim/lib/ifs.py`, stubs in `dev/sim/stubs/{boot,bin}`, and four profiles (`mhi2`, `mhig`, `mhig-scan-ba0000`, `mhig-scan-be0000`). Promotion criterion met: every profile runs `backup -a`, `offset -log`, `vim -s 0 c7`, `svm -f`, `flash -p`, and `flash -r` with exit 0 and empty stderr, 24 runs in 102 s. With a prepared patch folder, MHI2 `flash -p` journals `flashit -a ba0000` and leaves the patched image byte-identical in the simulated flash at `0xba0000`.
 - [ ] Milestone 3: characterization ("golden master") tests for every menu entry and every `start` option.
 - [ ] Milestone 4: shared library `lib/` (environment, logging, locking, unit identity, UI, help text), plus compatibility shims in `config/`.
 - [ ] Milestone 5a: migrate read-only and informational apps to `lib/`.
@@ -85,6 +85,28 @@ For the person in the car, nothing changes except where this plan deliberately f
 - Observation: in bash with `set -o pipefail`, `producer | grep -q` can fail when `grep` exits early and the producer (here `python3 -m zipfile -l`) gets SIGPIPE. `package.sh` therefore reads the zip listing once into a variable.
   Evidence: the first run printed "error: VERSION missing from package" and a Python `BrokenPipeError`, although `VERSION` was in the zip.
 
+- Observation: the bundled tools on the unit do not handle hexadecimal case consistently, and this breaks offset arithmetic. `apps/sbin/xxd` is "xxd V1.10 27oct98" and prints offsets with `%08lx`, i.e. lower case, even with `-u`. `apps/sbin/bc` is GNU bc from the QNX 6.5 SDK (copyright up to 2000). With `ibase=16` it reads lower-case letters as variable names, so `ba0000` evaluates to 0. Three defects follow, all reproduced in the simulator with the host's xxd and GNU bc, which behave the same way:
+  1. On a unit without `/net/rcc/usr/bin/flashlock`, `apps/offset -log` finds the image with `xxd | grep`. It then feeds the lower-case relative offset to `bc`. For stage-2 offsets whose relative value contains a letter (`be0000`, `c00000`, `c20000`; not `ba0000` or `bc0000`), the result is 0, so OFFSETPART2 becomes `540000` and STAGE2SIZE becomes `00000000`. `apps/backup -a` stores these wrong values in `<MU>-ifs-root-part2-OFFSET.txt`, and saves a 24 MiB "stage-2 backup" taken from the wrong place.
+  2. On the same scan path, a correct result is printed by `bc` in upper case (`BA0000`), while `patches/MHIG_patch_db.csv` stores `ba0000`. `apps/flash -p` compares them case-sensitively and stops with "OFFSETPART2 in DB and RCC flash do NOT match".
+  3. With `flashlock` present, the offset is lower case (`ba0000`), so the DB comparison passes. But `DDCALC` in `apps/flash` gives it to `bc`, which yields 0, so the "dump" of stage 2 is read from flash offset 0, and the SHA-1 check stops with "sha1 ... is NOT found in DB".
+  In every case the MHIG live patch stops before `flashit`, so it fails safely. Whether real MHIG units print upper- or lower-case offsets in `flashlock` must be confirmed from a real MHIG log. Defect 3 assumes lower case.
+  Evidence: `strings apps/sbin/xxd` shows `%08lx:` and `xxd V1.10 27oct98`; `echo "ibase=16; ba0000" | bc` prints `0`; simulator runs `check-mhig-scan-be0000-offset_-log` ("offset: 0x00540000"), `check-mhig-scan-ba0000-flash_-p` ("do NOT match"), and `check-mhig-flash_-p` (DEBUG block in the log: `SHA1_PATCH` differs from `SHA1_FEC_CP`, and the dumped `_check.ifs` is all zero bytes).
+
+- Observation: the offset allow-list in `IFSstage2` in `apps/flash` (`ba0000`, `bc0000`, `be0000`, `c00000`, `c20000`, either case) is the last barrier against defect 1 above. After `backup -a` stored offset `540000`, `flash -r` builds `...-ifs-root-part2-0x00540000.ifs` and refuses with "Flash offset unknown, flashing aborted!". Without that list it would write a 24 MiB image to the wrong flash address. The refactor must keep this list or replace it with something at least as strict.
+  Evidence: simulator run `check-be0000-backup-then-restore` (`backup -a` followed by `flash -r` on profile `mhig-scan-be0000`). The journal contains no `flashit` line.
+
+- Observation: `apps/svm -f` needs `/net/rcc/mnt/efs-persist/SWDL/Log/CfgAckRand.z` on the unit. When the file is missing, `apps/zlib` prints its help text, which starts "Usage: svm". That is visible proof that a sourced app inherits `$0` from its caller. The SVM run then continues. With the file present (the simulator creates a zlib stream of `svm_rand`), the full path runs: `modifyE2P w 3f0 00 00 01`, then a reboot.
+  Evidence: the first `svm -f` simulator run printed "zlib v0.1.3 ... Usage: svm [OPTION]"; the rerun journals `modifyE2P w 3f0 00 00 01` and `mib2_ioc_flash reboot`.
+
+- Observation: `apps/backup` computes free space as `df -k /net/mmx/mnt/boardbook | awk '{print $4}'` and uses the result in `[[ $SIZE -gt 5000 ]]`. That only works if QNX `df` prints no header line, so the `df` stub prints none. With the host's `df`, the header word "Available" ended up in the arithmetic and mksh reported "unexpected".
+  Evidence: stderr of the first `backup -a` simulator run: `apps/backup[569]: Available 985628112: unexpected`.
+
+- Observation: overlayfs cannot be mounted inside an unprivileged user namespace on this WSL2 kernel, not even with `userxattr`. The simulator therefore builds `/usr` as a tmpfs of symbolic links into a bind mount of the host's `/usr` at `/.host/usr`. That lets it add `/usr/apps/modifyE2P`, `/usr/apps/MIBRoot`, and `/usr/bin/flashlock`, which scripts reach through `on -f rcc`.
+  Evidence: `mount -t overlay ... -o userxattr,lowerdir=/usr,...` prints "wrong fs type, bad option".
+
+- Observation: repository files are mode 644, and the unit ignores permissions (FAT32). The simulator marks every file of the SD copy executable, otherwise even `apps/offset` fails with "Permission denied" (exit 126).
+  Evidence: the first `mibsim` run: `apps/offset: can't execute: Permission denied`.
+
 - Observation: the head-unit paths can be simulated on Linux without root and without editing any script, using `unshare --user --map-root-user --mount` plus `chroot`. This is the foundation for Milestones 2 and 3.
   Evidence: see "Simulator feasibility prototype" in `Artifacts and Notes`.
 
@@ -135,12 +157,30 @@ For the person in the car, nothing changes except where this plan deliberately f
   Rationale: syntax problems there would break installation, so checking it costs nothing. It can never be edited.
   Date/Author: 2026-09-25, Claude.
 
+- Decision: `mibsim` takes the SD content from the working tree by default (tracked and untracked, not ignored, minus `dev/`, `tests/`, `.agent/`, `.github/`, and `dist/`). `--rev <commit>` takes it from a commit. This replaces the earlier plan text, which defaulted to `git archive HEAD`.
+  Rationale: during a refactor, the tests must see uncommitted edits. Recording goldens on the baseline uses `--rev baseline/pre-refactor`, so nothing is lost.
+  Date/Author: 2026-09-25, Claude.
+
+- Decision: the simulator provides four profiles instead of two. `mhi2` and `mhig` have the `flashlock` tool. `mhig-scan-ba0000` and `mhig-scan-be0000` lack it and exercise the flash scan in `apps/offset`. The MHIG profiles use a fictional firmware `9999`; `mibsim` appends its row to `patches/MHIG_patch_db.csv` in the simulated SD copy only.
+  Rationale: the two offset code paths have different defects (see `Surprises & Discoveries`), and the characterization tests must pin both. Real MHIG checksums cannot be reproduced without the proprietary images, so a synthetic firmware with self-consistent checksums is the only way to reach the flash steps.
+  Date/Author: 2026-09-25, Claude.
+
+- Decision: unit-tool output formats that the repository does not show are inferred from the parsers that consume them, and marked as assumptions in the stub source. That covers the `modifyE2P` hex lines, the `flashlock` table, the `flashit` erase/program lines, `updatePersistence` read output, and `df` without a header. They must be checked against a real unit log before Milestone 9.
+  Rationale: the characterization tests pin the commands M.I.B. sends, and those do not depend on these formats. Only the code path taken does, and each path is visible in the golden output.
+  Date/Author: 2026-09-25, Claude.
+
+- Decision: the offset case defects and the scan defect are recorded now but fixed only in Milestone 7, together with the existing "normalize the flash offset" item.
+  Rationale: Milestones 3 to 6 must reproduce today's behaviour exactly, including failures that are safe today.
+  Date/Author: 2026-09-25, Claude.
+
 - Decision: plan documents are written in English.
   Rationale: `.agent/PLANS.md`, the code comments, the README, and the international contributor base are English.
   Date/Author: 2026-09-25, Claude.
 
 
 ## Outcomes & Retrospective
+
+Milestone 2 is complete (2026-09-25). The simulator reaches every critical code path: backup, offset detection by both methods, the MHI2 flash with validation, the MHIG live-patch checks, SVM, VIM, and reboot. It already found three latent defects in MHIG offset handling (see `Surprises & Discoveries`). They all fail safely today, but together they mean the MHIG live patch probably never reaches the flash step. That needs confirmation from a real MHIG log. A full run of the 24 checks takes about 100 seconds. Next is Milestone 3, the characterization scenarios.
 
 Milestones 0 and 1 are complete (2026-09-25). The tree can now be linted (`dev/tools/lint.sh`, 150 files, 0 syntax errors, ShellCheck ratchet at 3,444) and packaged (`dev/tools/package.sh`) reproducibly without root. No head-unit code was changed. Next is Milestone 2, the simulator.
 
@@ -204,13 +244,13 @@ Acceptance: `dev/tools/lint.sh` exits 0 on the unchanged code base. `unzip -l di
 
 Scope: a host program that runs any M.I.B. script exactly as the unit would, but against fake hardware, and records every command that would touch the unit. At the end, `dev/sim/mibsim --profile mhi2 -- /net/mmx/fs/sda0/apps/vim -s 0 c7` runs and leaves a journal, a log, and captured output in a result folder. This is labelled prototyping because the fidelity of the stubs is the main technical unknown. The promotion criterion is at the end of this milestone.
 
-How it works. `dev/sim/mibsim` is a bash script that runs on the host. It creates a result folder, by default `dev/sim/out/<timestamp>/`, holding a copy of the SD card, a fake root file system, and the outputs. The SD copy is produced by `git archive HEAD | tar -x`, or, when `--worktree` is given, by `rsync` of the working tree excluding `dev/` and `.git/`. Scripts write backups and logs to the card, so the real checkout must never be mounted.
+How it works. `dev/sim/mibsim` is a bash script that runs on the host. It creates a result folder, by default `dev/sim/out/<timestamp>/`, holding a copy of the SD card, a fake root file system, and the outputs. By default, the SD copy is the working tree: files listed by `git ls-files -co --exclude-standard`, minus `dev/`, `tests/`, `.agent/`, `.github/`, and `dist/`. With `--rev <commit>`, it is `git archive <commit>`. Every file in the copy is made executable, as on FAT32. Scripts write backups and logs to the card, so the real checkout must never be mounted.
 
-It then re-executes itself inside `unshare --user --map-root-user --mount --fork`. Inside, it mounts a `tmpfs` as the new root. It bind-mounts the host's `/bin`, `/lib`, `/lib64`, and `/etc`, or recreates them as symbolic links where the host uses a merged `/usr` layout. For `/usr` it creates a `tmpfs` and bind-mounts every child of the host `/usr` into it, so that new directories such as `/usr/apps` can be added. It binds `/dev` and the SD copy to `/net/mmx/fs/sda0`, builds the fake unit tree described below, and runs the command through `chroot` with `/bin/sh` replaced by `mksh`. The replacement is a bind mount of `/usr/bin/mksh` over `/bin/sh`.
+It then re-executes itself inside `unshare --user --map-root-user --mount --fork`. Inside, it mounts a `tmpfs` as the new root. It bind-mounts the host's `/usr` at `/.host/usr` and builds `/usr` as a `tmpfs` of symbolic links into it: one link per entry of `/usr/bin`, and one per other child of `/usr`. It recreates `/bin`, `/lib`, and similar paths as the same symbolic links as on the host (merged `/usr`), or bind-mounts them if they are real directories. It bind-mounts `/etc`. The tmpfs approach replaced an overlayfs attempt that the WSL2 kernel refused (see `Surprises & Discoveries`). It binds `/dev` and the SD copy to `/net/mmx/fs/sda0`, builds the fake unit tree described below, and runs the command through `chroot` with `/usr/bin/sh` and `/usr/bin/ksh` pointing at a copy of `mksh` in `/opt/sim/bin`. `bc` is copied there too, because it is usually missing on hosts. `awk` points at `gawk`, because `apps/eeprom2bin` uses `strtonum`.
 
 Stub placement follows the unit's own layout. Every M.I.B. script puts `/proc/boot` first in `PATH`, and QNX keeps its boot-image tools there. The simulator does not mount `procfs`. It creates `/proc/boot` as a plain directory in the fake root and places the stubs there, so they shadow host tools such as `mount` without editing any script.
 
-Every stub appends one line to `/sim/journal` in the form `<stub-name>\t<arg1>\t<arg2>...`. It reads its behaviour from `/sim/profile/`. The stubs are:
+The stubs for unit tools live in `/sim/stubs` (source: `dev/sim/stubs/bin/`), and the QNX system commands live in `/proc/boot` (source: `dev/sim/stubs/boot/`: `on`, `mount`, `umount`, `sleep`, `sync`, `top`, `slay`, `use`, `df`). Every stub that changes the unit appends one line to `/sim/journal` in the form `<stub-name>\t<arg1>\t<arg2>...`. It reads its behaviour from `/sim/profile/`. The stubs are:
 
 - `on`: drops `-f <node>` and executes the remaining arguments.
 - `mount`: journals and returns 0.
@@ -287,7 +327,7 @@ Scope: fix the defects found during analysis. Do each one as its own commit in t
 2. Validate the image before a restore. In `apps/flash -r`, before flashing the backup image, check three things: the file size is at least the header size, the header magic bytes are present, and the header size equals `STAGE2SIZE` as reported by `offset`, or equals the stock value in `patches/MHIG_patch_db.csv` for MHIG. Refuse with a clear message otherwise. Scenario: `flash_restore_truncated_backup`.
 3. Atomic backups. In `apps/backup`, write each file to `<name>.part` and rename it to the final name only after the copy succeeds and its size is non-zero. Then an interrupted backup is retried on the next run instead of being treated as complete, and `flash -p`'s completeness check becomes trustworthy. Existing complete backups are not touched. Scenarios: `backup_interrupted_then_resumed` and `backup_existing_untouched`.
 4. The correct menu file on MHIG. Make `apps/gem -i` use the same model-based choice as `apps/launcher`, through one shared library function `gem_install_link`. Scenario: `start_G_on_mhig`.
-5. Normalize the flash offset. Lower-case `OFFSETPART2` once in `apps/offset` and check it against one allow-list (`ba0000 c20000 c00000 be0000 bc0000`) instead of the ten-branch case comparison in `IFSstage2`. This resolves the TODO in `apps/flash` line 61.
+5. Normalize the flash offset and fix the hex arithmetic. In `apps/offset`, upper-case the scanned `xxd` offset before passing it to `bc`. Normalize `OFFSETPART2` once, lower case for comparisons and file names, and upper case whenever it goes to `bc` (in `apps/offset` `BLOCKS`, `apps/flash` `DDCALC`, and `apps/backup`). Compare it against `patches/MHIG_patch_db.csv` case-insensitively. Keep the allow-list (`ba0000 bc0000 be0000 c00000 c20000`), but check it in one place instead of the ten-branch comparison in `IFSstage2`. This resolves the TODO in `apps/flash` line 61 and the three defects in `Surprises & Discoveries`. Scenarios: `offset_scan_be0000` (expects `be0000` and the real size), `flash_patch_mhig_ok` (reaches `flashit`), and `flash_restore_wrong_offset_refused` (the allow-list still refuses `540000`). Treat this as the highest-risk fix of Milestone 7, because it turns a path that always stops into one that flashes. Validate it on a bench MHIG unit before release.
 6. Exit codes. Make failure paths in `flash`, `backup`, `offset`, and `svm` exit or return non-zero. Make `esd/scripts/patch_aio.sh` stop the all-in-one sequence when `backup -a` fails. Scenario: `aio_stops_after_backup_failure`. Before changing this, check in the source graph that no caller relies on the old exit status 0.
 7. Menu clean-up. Remove the dead menu entries that point at missing scripts (`backupplus_speech.sh`, `XXXX.sh`, `xxx.sh`), or add the missing wrapper if the intended command is clear from `apps/backupplus` (it has a `-speech` option, so add a `backupplus_speech.sh` wrapper that runs `apps/backupplus -speech`). Set both version labels from `VERSION`. Make the MHI2 label read "MHI2 Edition". Empty `dev/esd/known-issues.txt`.
 
@@ -356,20 +396,33 @@ Expected: `0`.
 
 Milestone 2:
 
-    dev/sim/make-profile.py dev/sim/profiles/mhi2/profile.ini
-    dev/sim/make-profile.py dev/sim/profiles/mhig/profile.ini
     dev/sim/mibsim --profile mhi2 -- /net/mmx/fs/sda0/apps/offset -log
     cat dev/sim/out/latest/stdout
 
-Expected (the MHI2 profile has `flashlock.txt` with the image at `ba0000`):
+Expected (the MHI2 profile has `flashlock` with the image at `ba0000`):
+
+    mibsim: exit 0 - results in dev/sim/out/<timestamp>-<pid>
+    Using SD1...
 
     ifs-root-stage2.ifs offset: 0x00ba0000
     ifs-root-stage2.ifs size: 1C06F300
 
-    dev/sim/mibsim --profile mhi2 -- /net/mmx/fs/sda0/esd/scripts/vim199.sh
+    dev/sim/mibsim --profile mhi2 -- /net/mmx/fs/sda0/apps/vim -s 0 c7
     cat dev/sim/out/latest/journal
 
-Expected: one line starting with `updatePersistence` followed by the tab-separated arguments `-key 3221422082`, and a line for the reboot path only if the script reboots. The exact line is recorded in the golden in Milestone 3.
+Expected (tab-separated):
+
+    mount	-uw	/net/mmx/fs/sda0
+    updatePersistence	-key	3221422082	-ns	0	-type	b	-value	C70000000000000000000000000000000000000000000000000000009F29
+    updatePersistence	-key	1	-ns	0	-type	b	-value	0
+    mib2_ioc_flash	reboot
+
+A scenario setup script gets `SIM_SD`, `SIM_UNIT`, `SIM_PROFILE`, and the `PROFILE_*` variables. For example, this places a pre-made MHI2 patch so that `flash -p` reaches `flashit`:
+
+    d="$SIM_SD/patches/${PROFILE_TRAIN}_${PROFILE_MU}_PATCH"; mkdir -p "$d"
+    cp "$SIM_PROFILE/stage2-patched.ifs" "$d/${PROFILE_MU}-ifs-root-part2-0x00${PROFILE_OFFSET}-${PROFILE_HEADER}.ifs"
+
+With that setup, `dev/sim/mibsim --profile mhi2 --setup <file> -- /net/mmx/fs/sda0/apps/flash -p` prints "OK: Flash checked and valid", and its journal contains `flashunlock`, `flashit -v -d -x -a ba0000 -p /net/rcc/dev/fs0 -f .../MU1440-ifs-root-part2-0x00ba0000-1C06F300.ifs`, and finally `mib2_ioc_flash reboot`.
 
 Milestone 3:
 
@@ -538,3 +591,5 @@ Manifest line format (Milestone 6), tab-separated, with `#` comments allowed:
 
 
 Revision note (2026-09-25): initial version, written after analysing `main` at `3f3caeb` and `origin/beta` at `144bf83`, including a ShellCheck baseline and a working namespace-simulator prototype.
+
+Revision note (2026-09-25, later): Milestones 0 to 2 were executed. The plan now records the simulator as built (worktree SD source, tmpfs-of-symlinks `/usr`, four profiles), the MHIG offset case and hex defects found with it, the safety role of the offset allow-list, and an expanded Milestone 7 item 5.

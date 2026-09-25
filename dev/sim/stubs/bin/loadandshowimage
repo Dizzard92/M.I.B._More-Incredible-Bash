@@ -1,0 +1,4 @@
+#!/bin/bash
+. /sim/stubs/journal.sh
+journal loadandshowimage "$@"
+exit 0

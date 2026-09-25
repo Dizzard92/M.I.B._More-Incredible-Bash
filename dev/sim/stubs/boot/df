@@ -1,0 +1,20 @@
+#!/bin/bash
+# QNX df: no header line; columns device, total, used, available, capacity, mount point.
+# apps/backup reads column 4 of "df -k /net/mmx/mnt/boardbook" as free kilobytes.
+human=""
+paths=()
+for a in "$@"; do
+	case "$a" in
+		-h) human=1 ;;
+		-*) ;;
+		*) paths+=("$a") ;;
+	esac
+done
+[ ${#paths[@]} -gt 0 ] || paths=(/net/mmx/mnt/boardbook /net/mmx/mnt/app /net/mmx/mnt/media /net/mmx/fs/sda0)
+for p in "${paths[@]}"; do
+	if [ -n "$human" ]; then
+		printf '%-24s %8s %8s %8s %4s  %s\n' "/dev/sim-$(basename "$p")" 4.0G 1.0G 3.0G 25% "$p"
+	else
+		printf '%-24s %10d %10d %10d %4s  %s\n' "/dev/sim-$(basename "$p")" 4194304 1048576 3145728 25% "$p"
+	fi
+done

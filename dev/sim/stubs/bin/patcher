@@ -1,0 +1,8 @@
+#!/bin/bash
+# apps/sbin/patcher -m ifs -v patch --pattern <file> <image>  ->  <image without .ifs>_patched.ifs
+. /sim/stubs/journal.sh
+journal patcher "$@"
+img="${!#}"
+[ -f "$img" ] || { echo "patcher: $img not found" >&2; exit 1; }
+echo "patcher (sim): patching $img"
+python3 /sim/stubs/ifs.py patch "$img" "${img%.ifs}_patched.ifs"

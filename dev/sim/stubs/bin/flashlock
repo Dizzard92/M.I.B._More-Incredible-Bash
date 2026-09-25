@@ -1,0 +1,7 @@
+#!/bin/bash
+# apps/sbin/flashlock and /usr/bin/flashlock: print the flash image table. The name suggests the
+# tool also (re-)locks the flash, so every call is journaled, like flashunlock.
+. /sim/stubs/journal.sh
+journal flashlock "$@"
+cat $PROFILE/flashlock.txt 2>/dev/null
+exit 0

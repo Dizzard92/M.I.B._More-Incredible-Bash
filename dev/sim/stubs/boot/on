@@ -1,0 +1,10 @@
+#!/bin/bash
+# QNX "on -f <node> <command>": run a command on another node. The simulator has one node.
+while [ $# -gt 0 ]; do
+	case "$1" in
+		-f|-n|-d|-p|-u) shift 2 ;;
+		-*) shift ;;
+		*) break ;;
+	esac
+done
+exec "$@"

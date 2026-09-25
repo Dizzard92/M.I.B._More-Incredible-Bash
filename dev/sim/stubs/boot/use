@@ -1,0 +1,4 @@
+#!/bin/bash
+# QNX "use -i <binary>" prints embedded usage/version info.
+echo "NAME=$(basename "${!#}")"
+echo "VERSION=SIM"
