@@ -1,0 +1,31 @@
+mount	-uw	/net/mmx/fs/sda0
+flashlock
+flashlock
+mount	-uw	/net/mmx/fs/sda0
+flashlock
+mount	-uw	/net/mmx/mnt/boardbook
+mount	-uw	/net/mmx/fs/sda0
+dumb_persistence_writer	-t	blob	-P	-L	1	-O	56	-f	0	3221356628	F
+dumb_persistence_writer	-t	blob	-P	-L	1	-O	71	-f	0	3221356628	F
+dumb_persistence_writer	-t	blob	-P	-L	1	-O	66	-f	0	3221356628	F
+dumb_persistence_writer	-t	int	-f	0	1343769792	3
+mount	-uw	/net/mmx/fs/sda0
+flashlock
+flashlock
+mount	-uw	/net/mmx/mnt/boardbook
+flashunlock
+flashit	-v	-d	-x	-a	ba0000	-p	/net/rcc/dev/fs0	-f	/net/mmx/fs/sda0/patches/MHI2_ER_SKG13_P4526_MU1440_PATCH/MU1440-ifs-root-part2-0x00ba0000-1C06F300.ifs
+flashlock
+mount	-uw	/net/mmx/mnt/app
+mount	-uw	/net/rcc/mnt/efs-persist
+mount	-ur	/net/mmx/mnt/app
+mount	-ur	/net/rcc/mnt/efs-persist
+mount	-uw	/net/mmx/mnt/app
+mount	-uw	/net/rcc/mnt/efs-persist
+mount	-ur	/net/mmx/mnt/app
+mount	-ur	/net/rcc/mnt/efs-persist
+loadandshowimage	/net/mmx/fs/sda0/apps/../mod/images/showimage/success.png
+dmdt	sc	0	-9
+loadandshowimage	1	2	3	4	5
+dmdt	sb	0
+mib2_ioc_flash	reboot

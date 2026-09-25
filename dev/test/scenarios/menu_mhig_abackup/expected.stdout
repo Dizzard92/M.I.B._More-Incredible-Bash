@@ -1,0 +1,48 @@
+M.I.B. - More Incredible Bash V3.7.3 "long time ago..."
+NOT FOR COMMERCIAL USE - IF YOU BOUGHT THIS YOU GOT RIPPED OFF
+
+NOTE: NEVER interrupt the process with -Back- button or removing SD Card!!!
+CAUTION: Ensure that a external power is connected to the car on during any
+flash or programming process! Power failure during flasing/programming will
+brick your unit! - All you do and use at your own risk!
+
+MMX-backup---->
+ifs-root-stage2.ifs offset: 0x00ba0000
+ifs-root-stage2.ifs size: D41B3F00
+Found SIMFAZIT-0000-000000002 backup, will check if all complete...
+Doing standard backup
+It will take about 5 minutes to complete.
+Please wait...
+Version info..... -> done :-)
+FEC folders...... -> failed!
+Shadow files..... -> failed!
+Partition info... -> done :-)
+Folder lists..... -> done :-)
+Datasets......... -> done :-)
+EEPROM........... -> done :-)
+storage1......... -> done :-)
+storage2......... -> done :-)
+SWDL............. -> failed!
+GEM jars......... -> done :-)
+lsd.jxe.......... -> done :-)
+HMI folders...... -> done :-)
+RCC OFFSET's..... -> done :-)
+RCC Flashlock.... -> done :-)
+RCC flash dump... -> done :-)
+RCC ifs-stage2... -> done :-)
+MMX flash dump... -> done :-)
+backing up backup
+ -> part 1 done -> part 2 done :-)
+
+
+MHIG_EU_AU_K1553 MU1553
+In case of errors, please check Log file on SD card.
+
+MMX-backup-done!
+There is no patch for your train version available?
+You want to support the project?
+-> Send us a copy of the /backup/ folder from your SD card
+-> Upload to https://mibsolution.one - user:guest pass:guest
+  -> folder: M.I.B_backup
+
+All done! now you can go back...

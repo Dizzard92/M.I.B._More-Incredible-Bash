@@ -1,0 +1,13 @@
+mount	-uw	/net/mmx/fs/sda0
+flashlock
+flashlock
+mount	-uw	/net/mmx/fs/sda0
+flashlock
+mount	-uw	/net/mmx/mnt/boardbook
+mount	-uw	/net/mmx/fs/sda0
+flashlock
+flashlock
+mount	-uw	/net/mmx/mnt/boardbook
+flashlock
+flashlock
+patcher	-m	ifs	-v	patch	--pattern	/net/mmx/fs/sda0/mod/patch_pattern/patch_2_3_FEC_CP.pattern	/net/mmx/fs/sda0/patches/9999-ifs-root-stage2-0x00ba0000-D41B3F00_check.ifs

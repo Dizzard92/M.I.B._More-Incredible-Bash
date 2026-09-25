@@ -1,0 +1,4 @@
+mount	-uw	/net/mmx/fs/sda0
+mount	-uw	/net/rcc/mnt/efs-persist
+modifyE2P	w	3f0	00	00	01
+slay	-f	j9

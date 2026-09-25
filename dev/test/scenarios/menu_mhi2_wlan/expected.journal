@@ -1,0 +1,6 @@
+mount	-uw	/net/mmx/fs/sda0
+pc	i:0:0x50186008	1
+pc	i:28442848:514	1
+pc	b:0:3221356628:8.2	1
+updatePersistence	-key	1	-ns	0	-type	b	-value	0
+mib2_ioc_flash	reboot

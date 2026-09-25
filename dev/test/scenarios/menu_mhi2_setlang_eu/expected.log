@@ -1,0 +1,34 @@
+ __  __     ___           ___  
+|  \/  |   |_ _|         | _ ) 
+| |\/| |    | |          | _ \ 
+|_|  |_|ore|___|ncredible|___/ash - V3.7.3 "long time ago..."
+______________________________________________________________________
+
+NOT FOR COMMERCIAL USE - IF YOU BOUGHT THIS YOU GOT RIPPED OFF
+
+Logging_MU1440-MHI2_ER_SKG13_P4526-SIMFAZIT-0000-000000001:
+PN: 5L0035020A - HW Number: H40
+Metainfo2 Variant (Variant2): FM2-M-NRH-EU-SK-MQB
+EEPROM Variant (Variant1): FM2-M-NRH-EU
+Parameter set part number: 5L003502001
+Coding: 03735200000000000000000000000000000000000000000000
+Car Model: Skoda Octavia Combi vRS (5E5) 
+VIN MIB: TMBZZZSIMULATED01 - VIN car: TMBZZZSIMULATED01
+______________________________________________________________________
+
+ls --> total 1172
+______________________________________________________________________
+
+timestamp: 2026_01_01_00_00_00----->
+MMX-setlang---->
+Writing EU dataset 0x2D00 (visible_MMI_language_dataset):
+de_DE,en_GB,fr_FR,it_IT,es_ES,nl_NL,cs_CZ,pt_PT,sv_SE,tr_TR,ru_RU,
+pl_PL,no_NO,en_US,es_MX,pt_BR,ar_SA,bs_BA,ro_RO,sk_SK,sl_SI,sr_RS,
+da_DK,el_GR, hr_HR,hu_HU,fi_FI,bg_BG,lv_LV,et_EE,lt_LT,uk_UA
+Writing en_GB dataset 0x280 (language dataset)
+Dataset 2D00 before the change:Dataset 2D00 after the change: Dataset 280 before the change:Dataset 280 after the change: 
+setlang done!
+
+MMX-setlang---->
+Reboot Unit...
+Unit is rebooting now...

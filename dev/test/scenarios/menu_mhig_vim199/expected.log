@@ -1,0 +1,38 @@
+ __  __     ___           ___  
+|  \/  |   |_ _|         | _ ) 
+| |\/| |    | |          | _ \ 
+|_|  |_|ore|___|ncredible|___/ash - V3.7.3 "long time ago..."
+______________________________________________________________________
+
+NOT FOR COMMERCIAL USE - IF YOU BOUGHT THIS YOU GOT RIPPED OFF
+
+Logging_MU1553-MHIG_EU_AU_K1553-SIMFAZIT-0000-000000002:
+PN: 4M0035043A - HW Number: H13
+Metainfo2 Variant (Variant2): FMU-H-EU-AU
+EEPROM Variant (Variant1): MHIG-EU-AU
+Parameter set part number: 4M003504301
+Coding: 01157600000000000000000000000000000000000000000000
+Car Model: Audi e-tron (GEN) 
+VIN MIB: WAUZZZSIMULATED02 - VIN car: -----------------
+______________________________________________________________________
+
+ls --> total 1172
+______________________________________________________________________
+
+timestamp: 2026_01_01_00_00_00----->
+
+MMX-vim---->
+VIM on Unit: 0600000000000000000000000000000000000000000000000000000000000000
+Position->0 - HEX-Value->c7
+
+Generate crc16/CCITT-False checksum............................... and the Winner is: 9F29
+
+VIM is now patched on Byte 0 with 199 km/h (0xC7)
+
+MMX-vim---->
+Reboot Unit...
+Unit is rebooting now...
+
+Buttons will stop working now
+Screen might turn off
+Reboot will take ~60s

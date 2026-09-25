@@ -1,0 +1,28 @@
+Using SD1...
+
+
+MMX-backup---->
+Found SIMFAZIT-0000-000000001 backup, will check if all complete...
+
+[31mDoing basic backup
+It will take about 2 minutes to complete.
+Please wait...
+
+[36mVersion info..... -> done :-)
+FEC folders...... -> failed!
+Shadow files..... -> failed!
+Partition info... -> done :-)
+Folder lists..... -> done :-)
+Datasets......... -> done :-)
+EEPROM........... -> done :-)
+storage1......... -> done :-)
+storage2......... -> done :-)
+backing up backup
+ -> part 1 done -> part 2 skipped
+[00;00m
+
+MHI2_ER_SKG13_P4526 MU1440
+In case of errors, please check Log file on SD card.
+
+
+MMX-backup-done!

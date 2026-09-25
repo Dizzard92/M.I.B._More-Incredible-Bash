@@ -1,0 +1,34 @@
+ __  __     ___           ___  
+|  \/  |   |_ _|         | _ ) 
+| |\/| |    | |          | _ \ 
+|_|  |_|ore|___|ncredible|___/ash - V3.7.3 "long time ago..."
+______________________________________________________________________
+
+NOT FOR COMMERCIAL USE - IF YOU BOUGHT THIS YOU GOT RIPPED OFF
+
+Logging_MU1440-MHI2_ER_SKG13_P4526-SIMFAZIT-0000-000000001:
+PN: 5L0035020A - HW Number: H40
+Metainfo2 Variant (Variant2): FM2-M-NRH-EU-SK-MQB
+EEPROM Variant (Variant1): FM2-M-NRH-EU
+Parameter set part number: 5L003502001
+Coding: 03735200000000000000000000000000000000000000000000
+Car Model: Skoda Octavia Combi vRS (5E5) 
+VIN MIB: TMBZZZSIMULATED01 - VIN car: TMBZZZSIMULATED01
+______________________________________________________________________
+
+ls --> total 1172
+______________________________________________________________________
+
+timestamp: 2026_01_01_00_00_00----->
+
+MMX-vim---->
+VIM on Unit: 0600000000000000000000000000000000000000000000000000000000000000
+Position->0 - HEX-Value->c7
+
+Generate crc16/CCITT-False checksum............................... and the Winner is: 9F29
+
+VIM is now patched on Byte 0 with 199 km/h (0xC7)
+
+MMX-vim---->
+Reboot Unit...
+Unit is rebooting now...

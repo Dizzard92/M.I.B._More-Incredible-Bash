@@ -1,0 +1,2 @@
+mount	-uw	/net/mmx/mnt/app
+mount	-uw	/net/rcc/mnt/efs-persist

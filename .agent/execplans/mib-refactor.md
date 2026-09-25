@@ -24,7 +24,13 @@ For the person in the car, nothing changes except where this plan deliberately f
 - [x] (2026-09-25 18:00Z) Milestone 0: local tags `baseline/pre-refactor` (`3f3caeb`) and `archive/beta-2022-11` (`144bf83`) exist, remote `upstream` was added and fetched (`main` equals `upstream/main`, 0/0), branch `refactor/core` was created, and `dev/NOTES-beta.md` was written. Both tags were pushed to origin (the Dizzard92 fork) on 2026-09-25 after the owner approved it and authenticated `gh`.
 - [x] (2026-09-25 18:10Z) Milestone 1: `dev/README.md`, `dev/tools/install-deps.sh` (local install into `dev/.tools/`, no root), `dev/tools/shell-sources.sh` (150 files), `dev/tools/lint.sh` with the baseline `dev/lint/shellcheck-baseline.txt` (3,444 findings), `dev/tools/package.sh`, the `export-ignore` entries in `.gitattributes`, and `.gitignore` entries. Verified: lint exits 0 on the unchanged tree; an injected finding fails the run with "5 new"; the package has 292 files, no dev files, unchanged frozen checksums, CRLF for `metainfo2.txt` and the ESD files, LF for the apps.
 - [x] (2026-09-25 18:30Z) Milestone 2 (prototyping, promoted): `dev/sim/mibsim`, `dev/sim/make-profile.py`, `dev/sim/lib/ifs.py`, stubs in `dev/sim/stubs/{boot,bin}`, and four profiles (`mhi2`, `mhig`, `mhig-scan-ba0000`, `mhig-scan-be0000`). Promotion criterion met: every profile runs `backup -a`, `offset -log`, `vim -s 0 c7`, `svm -f`, `flash -p`, and `flash -r` with exit 0 and empty stderr, 24 runs in 102 s. With a prepared patch folder, MHI2 `flash -p` journals `flashit -a ba0000` and leaves the patched image byte-identical in the simulated flash at `0xba0000`.
-- [ ] Milestone 3: characterization ("golden master") tests for every menu entry and every `start` option.
+- [ ] Milestone 3: characterization ("golden master") tests for every menu entry and every `start` option. PAUSED 2026-09-25 about 18:45Z at the owner's request. Done so far:
+  - [x] `dev/test/run.sh` (runner; `--record`, `--rev`, `--jobs`, `--keep`, glob filter; runs up to 12 scenarios in parallel; deletes the simulator output of passing scenarios), `dev/test/normalize.sh`, `dev/test/gen-scenarios.sh` (table-driven: `menu_<mhi2|mhig>_<script>`, `start_<opt>`, `lock_<script>`), and `dev/test/lib/setup.sh` (helpers `place_patch_folder`, `flash_image`, `lock`).
+  - [x] 228 scenarios: 141 `menu_*` (84 MHI2 and 57 MHIG entries), 21 `start_*` plus `start_G_mhig`, 41 `lock_*`, and 25 hand-written critical-path scenarios (`flash_patch_*`, `flash_restore_*`, `backup_*`, `offset_*`, `install_swdl_*`, `aio_mhi2_with_patch`).
+  - [x] Goldens recorded with `dev/test/run.sh --record --rev baseline/pre-refactor`. Exit codes: 199 × 0, 23 × 1, and 6 × 127 (menu entries whose script is missing). There is no timeout (124). The full run takes about 125 s with 12 jobs.
+  - [x] Determinism check: comparing the working tree with the baseline goldens gives 227 passed and 1 failed. The failure is `menu_mhig_show_qr`, a race with a background job (see `Surprises & Discoveries`).
+  - [ ] NEXT: make `mibsim` wait for background jobs (design in the Decision Log entry "mibsim waits for background processes"), re-record `menu_mhig_show_qr` and `menu_mhi2_show_qr*` on the baseline, then run `dev/test/run.sh` twice and expect `228 passed` both times.
+  - [ ] Then: `dev/tools/source-graph.sh` → `dev/docs/source-graph.txt`; the mutation check (change `-a $OFFSETPART2` to `-a 0` in `apps/flash`, expect `flash_*` scenarios to fail, then revert); update `dev/README.md`; commit; mark Milestone 3 done.
 - [ ] Milestone 4: shared library `lib/` (environment, logging, locking, unit identity, UI, help text), plus compatibility shims in `config/`.
 - [ ] Milestone 5a: migrate read-only and informational apps to `lib/`.
 - [ ] Milestone 5b: migrate apps that write settings (EEPROM and persistence writers).
@@ -107,6 +113,12 @@ For the person in the car, nothing changes except where this plan deliberately f
 - Observation: repository files are mode 644, and the unit ignores permissions (FAT32). The simulator marks every file of the SD copy executable, otherwise even `apps/offset` fails with "Permission denied" (exit 126).
   Evidence: the first `mibsim` run: `apps/offset: can't execute: Permission denied`.
 
+- Observation: several menu wrappers start work in the background and return early. For example, `esd/scripts/show_qr.sh` runs `apps/showimage -load 15 ... &` and then `sleep 3`. On the unit the background job keeps running. In the simulator, `sleep` returns at once, so the job races with the end-of-run snapshot, and its journal lines (`loadandshowimage 1 2 3 4 5`) and log lines appear or not at random.
+  Evidence: `menu_mhig_show_qr` failed the determinism check with an extra `loadandshowimage 1 2 3 4 5` journal line and extra log header lines.
+
+- Observation: a first attempt to wait for background jobs counted processes with `find ... | wc -l` inside the waiting loop. `find` and `wc` count themselves, so the loop never reached zero and the run hung until the 600 s timeout. The attempt was reverted, and no broken `mibsim` was committed. Also, `pkill -f <pattern>` run from a shell whose own command line contains the pattern kills that shell (exit 144). Kill simulator leftovers by PID (`pgrep -af "mibsim --inner"`, then `kill <pids>`).
+  Evidence: the hung run was `unshare ... --pid --fork dev/sim/mibsim --inner .../t-bg2`, killed by PID.
+
 - Observation: the head-unit paths can be simulated on Linux without root and without editing any script, using `unshare --user --map-root-user --mount` plus `chroot`. This is the foundation for Milestones 2 and 3.
   Evidence: see "Simulator feasibility prototype" in `Artifacts and Notes`.
 
@@ -173,12 +185,26 @@ For the person in the car, nothing changes except where this plan deliberately f
   Rationale: Milestones 3 to 6 must reproduce today's behaviour exactly, including failures that are safe today.
   Date/Author: 2026-09-25, Claude.
 
+- Decision: the `ls -als` listing of the SD root that `config/LOGS` writes into the log header is removed from the log comparison (`dev/test/normalize.sh` drops lines normalized to `<ls> ...` and `total <N>`). Contents of inherently volatile files (`*-LOG.txt`, `*.log`, `*-folders.txt`, `*-Partition.txt`) are compared by existence only. `dd` timing lines are reduced to `<TIME>`.
+  Rationale: the listing changes whenever any top-level file changes (it already differed for `.gitattributes`, and the new `lib/` folder of Milestone 4 would change it in every scenario). It describes the SD card, not what M.I.B. does to the unit.
+  Date/Author: 2026-09-25, Claude.
+
+- Decision: mibsim waits for background processes (planned, not yet implemented). `mibsim` should start the inner phase with `unshare --user --map-root-user --mount --pid --fork`, so the inner bash is PID 1 of a private PID namespace. It should mount a private proc at `$out/.proc`. After the command returns, it waits (polling every 0.1 s, up to the scenario timeout) until no process other than PID 1 is left. The count must use only a shell glob (`for f in "$out"/.proc/[0-9]*`), never a pipeline, because pipeline processes would count themselves. When the timeout is reached, stragglers are killed with `kill -9 -1`, "mibsim: killed N background process(es)" is appended to `stderr`, and `$out/.proc` is unmounted.
+  Rationale: the final state must include everything the scenario starts, as on the unit, where background jobs keep running, and it must be reproducible.
+  Date/Author: 2026-09-25, Claude.
+
+- Decision: menu entries that point to missing scripts (`XXXX.sh`, `xxx.sh`, `backupplus_speech.sh`) get characterization scenarios anyway. Their golden is exit 127 ("not found").
+  Rationale: this pins today's broken behaviour. Milestone 7 changes it deliberately.
+  Date/Author: 2026-09-25, Claude.
+
 - Decision: plan documents are written in English.
   Rationale: `.agent/PLANS.md`, the code comments, the README, and the international contributor base are English.
   Date/Author: 2026-09-25, Claude.
 
 
 ## Outcomes & Retrospective
+
+Milestone 3 is paused, about three quarters done (2026-09-25, at the owner's request). 228 scenarios with goldens are recorded on `baseline/pre-refactor`, and 227 of them are reproducible. The remaining work is listed under Milestone 3 in `Progress`. To resume: read `Progress`, run `dev/tools/install-deps.sh` if `dev/.tools` is missing, run `dev/test/run.sh` (expect 227 passed and 1 failed, `menu_mhig_show_qr`), then implement the "mibsim waits for background processes" decision.
 
 Milestone 2 is complete (2026-09-25). The simulator reaches every critical code path: backup, offset detection by both methods, the MHI2 flash with validation, the MHIG live-patch checks, SVM, VIM, and reboot. It already found three latent defects in MHIG offset handling (see `Surprises & Discoveries`). They all fail safely today, but together they mean the MHIG live patch probably never reaches the flash step. That needs confirmation from a real MHIG log. A full run of the 24 checks takes about 100 seconds. Next is Milestone 3, the characterization scenarios.
 
@@ -426,11 +452,11 @@ With that setup, `dev/sim/mibsim --profile mhi2 --setup <file> -- /net/mmx/fs/sd
 
 Milestone 3:
 
-    dev/test/gen-menu-scenarios.sh          # creates dev/test/scenarios/menu_* from both ESD files
-    git switch --detach baseline/pre-refactor
-    dev/test/run.sh --record
-    git switch refactor/core
-    dev/test/run.sh
+    dev/test/gen-scenarios.sh                         # menu_*, start_*, lock_* from the ESD files (idempotent)
+    dev/test/run.sh --record --rev baseline/pre-refactor   # goldens from the baseline's SD content
+    dev/test/run.sh                                   # compare the working tree
+
+(`--rev` replaces the earlier idea of switching the checkout. The dev tooling always comes from the working tree, and only the SD content comes from the given commit.)
 
 Expected tail of the last command:
 

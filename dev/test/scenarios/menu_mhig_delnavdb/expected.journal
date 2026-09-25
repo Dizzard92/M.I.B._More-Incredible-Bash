@@ -1,0 +1,4 @@
+mount	-uw	/net/mmx/fs/sda0
+umount	-f	/mnt/navdb
+mount	-t	qnx6	/dev/mnand0t178.8	/mnt/navdb
+slay	-f	j9

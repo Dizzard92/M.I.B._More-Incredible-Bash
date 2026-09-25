@@ -1,0 +1,62 @@
+ __  __     ___           ___  
+|  \/  |   |_ _|         | _ ) 
+| |\/| |    | |          | _ \ 
+|_|  |_|ore|___|ncredible|___/ash - V3.7.3 "long time ago..."
+______________________________________________________________________
+
+NOT FOR COMMERCIAL USE - IF YOU BOUGHT THIS YOU GOT RIPPED OFF
+
+Logging_MU1553-MHIG_EU_AU_K1553-SIMFAZIT-0000-000000002:
+PN: 4M0035043A - HW Number: H13
+Metainfo2 Variant (Variant2): FMU-H-EU-AU
+EEPROM Variant (Variant1): MHIG-EU-AU
+Parameter set part number: 4M003504301
+Coding: 01157600000000000000000000000000000000000000000000
+Car Model: Audi e-tron (GEN) 
+VIN MIB: WAUZZZSIMULATED02 - VIN car: -----------------
+______________________________________________________________________
+
+ls --> total 1172
+______________________________________________________________________
+
+timestamp: 2026_01_01_00_00_00----->
+
+MMX-addfec---->
+
+/net/rcc/mnt/efs-system/backup/FEC/FecContainer.fec not found
+--- FECs in use from /net/rcc/mnt/efs-persist/FEC/FecContainer.fec:
+
+
+
+timestamp: 2026_01_01_00_00_00----->
+
+MMX-fecel---->
+--- Found /net/mmx/fs/sda0/patches/addFec/MHIG/AU/EU/addFecs.txt
+    Adding following FECs:
+021000EE
+--- Train: MHIG_EU_AU_K1553
+
+--- Using /net/rcc/mnt/efs-persist/FEC/FecContainer.fec
+
+--- Invalid FecContainer.fec. Generating a new one...
+--- Existing FecContainer parsed
+!!! Generation of AddedFecs.tmp failed!
+
+
+timestamp: 2026_01_01_00_00_00----->
+
+MMX-fecel---->
+/usr/bin/sha1sum: /net/rcc/mnt/efs-persist/FEC/ExceptionList.txt: No such file or directory
+--- Checking if stock EL is installed
+-- Custom EL found - (sha1=)
+    Copy stock EL back to unit -> done :-)
+--- EL is restored
+
+timestamp: 2026_01_01_00_00_00----->
+
+MMX-addfec---->
+
+/net/rcc/mnt/efs-system/backup/FEC/FecContainer.fec not found
+--- FECs in use from /net/rcc/mnt/efs-persist/FEC/FecContainer.fec:
+
+

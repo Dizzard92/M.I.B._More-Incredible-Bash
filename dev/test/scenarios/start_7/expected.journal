@@ -1,0 +1,6 @@
+mount	-uw	/net/mmx/fs/sda0
+dumb_persistence_writer	-t	blob	-P	-L	1	-O	56	-f	0	3221356628	F
+dumb_persistence_writer	-t	blob	-P	-L	1	-O	71	-f	0	3221356628	F
+dumb_persistence_writer	-t	blob	-P	-L	1	-O	66	-f	0	3221356628	F
+dumb_persistence_writer	-t	int	-f	0	1343769792	3
+mib2_ioc_flash	reboot

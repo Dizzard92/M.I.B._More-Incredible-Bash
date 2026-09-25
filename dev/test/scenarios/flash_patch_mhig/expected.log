@@ -1,0 +1,142 @@
+ __  __     ___           ___  
+|  \/  |   |_ _|         | _ ) 
+| |\/| |    | |          | _ \ 
+|_|  |_|ore|___|ncredible|___/ash - V3.7.3 "long time ago..."
+______________________________________________________________________
+
+NOT FOR COMMERCIAL USE - IF YOU BOUGHT THIS YOU GOT RIPPED OFF
+
+Logging_MU1553-MHIG_EU_AU_K1553-SIMFAZIT-0000-000000002:
+PN: 4M0035043A - HW Number: H13
+Metainfo2 Variant (Variant2): FMU-H-EU-AU
+EEPROM Variant (Variant1): MHIG-EU-AU
+Parameter set part number: 4M003504301
+Coding: 01157600000000000000000000000000000000000000000000
+Car Model: Audi e-tron (GEN) 
+VIN MIB: WAUZZZSIMULATED02 - VIN car: -----------------
+______________________________________________________________________
+
+ls --> total 1172
+______________________________________________________________________
+
+timestamp: 2026_01_01_00_00_00----->
+
+MMX-flash---->
+
+MMX-flash---->
+ifs-root-stage2.ifs offset: 0x00ba0000
+ifs-root-stage2.ifs size: D41B3F00
+Found SIMFAZIT-0000-000000002 backup, will check if all complete...
+Doing standard backup
+It will take about 5 minutes to complete.
+Please wait...
+Version info.....cp: cannot stat '/net/mmx/mnt/app/eso/hmi/splashscreen/StartupImageConfig.txt': No such file or directory
+
+timestamp: 2026_01_01_00_00_00----->
+
+MMX-allversions---->
+cat: /net/mmx/mnt/app/eso/hmi/lsd/lang_hmi_builtin.config: No such file or directory
+cat: /net/mmx/net/rcc/dev/shmem/version.txt: No such file or directory
+cat: /net/mmx/mnt/system/etc/project.txt: No such file or directory
+head: cannot open '/net/mmx/mnt/app/img_ver.txt' for reading: No such file or directory
+cat: /net/mmx/mnt/app/version_info.txt: No such file or directory
+cat: /net/mmx/mnt/app/version_info.txt: No such file or directory
+cat: /net/mmx/mnt/app/version_info.txt: No such file or directory
+cat: /net/mmx/mnt/app/version_info.txt: No such file or directory
+cat: /net/mmx/mnt/app/version_info.txt: No such file or directory
+cat: /net/mmx/mnt/app/version_info.txt: No such file or directory
+cat: /net/mmx/mnt/app/version_info.txt: No such file or directory
+cat: /net/mmx/mnt/app/version_info.txt: No such file or directory
+ls: cannot access '/net/mmx/mnt/app/speech/hmi/??_??': No such file or directory
+grep: /net/mmx/mnt/app/version_info.txt: No such file or directory
+grep: /net/mmx/mnt/app/version_info.txt: No such file or directory
+grep: /net/mmx/mnt/app/version_info.txt: No such file or directory
+E: /net/mmx/fs/sda0/apps/allversions[485]: cd: /net/mmx/tmp: No such file or directory
+cat: /net/mmx/dev/nvsku/bom: No such file or directory
+cat: /net/mmx/dev/nvsku/project: No such file or directory
+cat: /net/mmx/dev/nvsku/sku: No such file or directory
+cat: /net/mmx/dev/nvsku/rev: No such file or directory
+cat: /net/mmx/dev/nvsku/serial_num: No such file or directory
+ -> done :-)
+FEC folders......cp: invalid option -- 'c'
+Try 'cp --help' for more information.
+cp: invalid option -- 'c'
+Try 'cp --help' for more information.
+ -> failed!
+Shadow files.....cp: cannot stat '/net/rcc/etc/shadow_rcc': No such file or directory
+cp: cannot stat '/net/rcc/etc/shadow': No such file or directory
+ -> failed!
+Partition info...cat: /net/mmx/etc/fstab: No such file or directory
+W: /net/mmx/fs/sda0/apps/flash: /net/mmx/fs/sda0/apps/backup[569]: /net/mmx/bin/fdisk: inaccessible or not found
+W: /net/mmx/fs/sda0/apps/flash: /net/mmx/fs/sda0/apps/backup[569]: /net/mmx/bin/fdisk: inaccessible or not found
+ -> done :-)
+Folder lists.....ls: cannot access '/net/rcc/bin': No such file or directory
+ls: cannot access '/net/rcc/sbin': No such file or directory
+ls: cannot access '/net/mmx/bin': No such file or directory
+ls: cannot access '/net/mmx/sbin': No such file or directory
+ls: cannot access '/net/mmx/usr/bin': No such file or directory
+ls: cannot access '/net/mmx/mnt/app/armle/bin': No such file or directory
+ls: cannot access '/net/mmx/mnt/app/armle/usr/bin': No such file or directory
+ls: cannot access '/net/mmx/mnt/media/': No such file or directory
+ls: cannot access '/net/mmx/mnt/gracenotedb/': No such file or directory
+ls: cannot access '/net/mmx/mnt/adb/': No such file or directory
+ls: cannot access '/net/mmx/mnt/navdb/': No such file or directory
+ -> done :-)
+Datasets......... -> done :-)
+EEPROM........... -> done :-)
+storage1......... -> done :-)
+storage2......... -> done :-)
+SWDL.............cp: invalid option -- 'c'
+Try 'cp --help' for more information.
+ -> failed!
+GEM jars......... -> done :-)
+lsd.jxe.......... -> done :-)
+HMI folders...... -> done :-)
+RCC OFFSET's..... -> done :-)
+RCC Flashlock.... -> done :-)
+RCC flash dump... -> done :-)
+RCC ifs-stage2...7488+0 records in
+7488+0 records out
+30670848 bytes (31 MB, 29 MiB) copied, <TIME>
+ -> done :-)
+MMX flash dump... -> done :-)
+backing up backupcp: cannot stat '/net/mmx/fs/sda0/backup/MU1553-MHIG_EU_AU_K1553-SIMFAZIT-0000-000000002/FEC/': No such file or directory
+ -> part 1 done
+ls -als /net/mmx/mnt/boardbook --> total 12
+Free space in /net/mmx/mnt/boardbook 3.0Gbytes
+
+MMX-flash-done!
+
+--- Reading patch DB...
+--- Searching offset and size of root-stage2.ifs...:
+ifs-root-stage2.ifs offset: 0x00ba0000
+ifs-root-stage2.ifs size: D41B3F00
+--- OK: OFFSETPART2 in DB and RCC flash match.
+--- OK: STAGE2SIZE in DB and RCC flash match.
+--- Dumping root-stage2.ifs from RCC flash.
+    It will take about 1 minute. Please wait...
+--- Patching dumped root-stage2.ifs.
+1 processes; 0 threads;
+CPU states: 1.0% user, 1.0% kernel
+Memory: 1024M total, 300M avail, page size 4K
+--- Free RAM on unit: 300MB
+    It will take about 2 minutes. Please wait...
+patcher (sim): patching /net/mmx/fs/sda0/patches/9999-ifs-root-stage2-0x00ba0000-D41B3F00_check.ifs
+--- Calculating SHA1 of 9999-ifs-root-stage2-0x00ba0000-DC1B3F00_FEC_CP.ifs
+!!! sha1 of 9999-ifs-root-stage2-0x00ba0000-DC1B3F00_FEC_CP.ifs is NOT found in DB
+    Stopping here ...
+--------------- DEBUG --------------
+IFS_VERSION:		9999
+OFFSETPART2:		ba0000
+OFFSETPART2_DB:		ba0000
+STAGE2SIZE:		D41B3F00
+STAGE2SIZE_orig:	D41B3F00
+SHA1_orig:		dc2fd8df2afa9de7e242eb146f0de5a5af05ccf4
+header_chk_FEC_CP:	DC1B3F00
+SHA1_FEC_CP:		b132f92111c71f3e7fff32db26a1dda3411b3fee
+IFS2_new:		/net/mmx/fs/sda0/patches/9999-ifs-root-stage2-0x00ba0000-DC1B3F00_FEC_CP.ifs
+IFS2_backup:		/net/mmx/fs/sda0/backup/MU1553-MHIG_EU_AU_K1553-SIMFAZIT-0000-000000002/MU1553-ifs-root-part2-0x00ba0000.ifs
+Big Endian:		003F1BD4
+SHA1_UNIT:		
+SHA1_PATCH:		c0b2816ab6cb8822c887e63965d6a440a244f6f2
+------------------------------------

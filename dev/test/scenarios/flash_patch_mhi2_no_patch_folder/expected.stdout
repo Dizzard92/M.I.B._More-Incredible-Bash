@@ -1,0 +1,53 @@
+Using SD1...
+
+
+MMX-flash---->
+ifs-root-stage2.ifs offset: 0x00ba0000
+ifs-root-stage2.ifs size: 1C06F300
+Found SIMFAZIT-0000-000000001 backup, will check if all complete...
+
+[31mDoing standard backup
+It will take about 5 minutes to complete.
+Please wait...
+
+[36mVersion info..... -> done :-)
+FEC folders...... -> failed!
+Shadow files..... -> failed!
+Partition info... -> done :-)
+Folder lists..... -> done :-)
+Datasets......... -> done :-)
+EEPROM........... -> done :-)
+storage1......... -> done :-)
+storage2......... -> done :-)
+SWDL............. -> failed!
+GEM jars......... -> done :-)
+lsd.jxe.......... -> done :-)
+HMI folders...... -> done :-)
+RCC OFFSET's..... -> done :-)
+RCC Flashlock.... -> done :-)
+RCC flash dump... -> done :-)
+RCC ifs-stage2... -> done :-)
+MMX flash dump... -> done :-)
+backing up backup
+ -> part 1 done -> part 2 done :-)
+[00;00m
+
+MHI2_ER_SKG13_P4526 MU1440
+In case of errors, please check Log file on SD card.
+
+
+MMX-flash-done!
+Train: MHI2_ER_SKG13_P4526
+Patch folder /net/mmx/fs/sda0/patches/MHI2_ER_SKG13_P4526_MU1440_PATCH NOT found on SD card
+
+Possible reasons:
+1. Patch folder is not copied to SD
+2. FW is not yet known to M.I.B
+
+Actions:
+1. Copy folder MHI2_ER_SKG13_P4526_MU1440_PATCH to SD card
+2. Share your backup in case no patch is available for this FW yet
+
+Missing files/folders - no patch can be applied
+
+You can go back now...

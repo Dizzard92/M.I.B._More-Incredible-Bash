@@ -1,0 +1,78 @@
+Using SD1...
+
+
+MMX-backup---->
+ifs-root-stage2.ifs offset: 0x00ba0000
+ifs-root-stage2.ifs size: D41B3F00
+Found SIMFAZIT-0000-000000002 backup, will check if all complete...
+
+[31mDoing standard backup
+It will take about 5 minutes to complete.
+Please wait...
+
+[36mVersion info..... -> done :-)
+FEC folders...... -> failed!
+Shadow files..... -> failed!
+Partition info... -> done :-)
+Folder lists..... -> done :-)
+Datasets......... -> done :-)
+EEPROM........... -> done :-)
+storage1......... -> done :-)
+storage2......... -> done :-)
+SWDL............. -> failed!
+GEM jars......... -> done :-)
+lsd.jxe.......... -> done :-)
+HMI folders...... -> done :-)
+RCC OFFSET's..... -> done :-)
+RCC Flashlock.... -> done :-)
+RCC flash dump... -> done :-)
+RCC ifs-stage2... -> done :-)
+MMX flash dump... -> done :-)
+backing up backup
+ -> part 1 done -> part 2 done :-)
+[00;00m
+
+MHIG_EU_AU_K1553 MU1553
+In case of errors, please check Log file on SD card.
+
+
+MMX-backup-done!
+Using SD1...
+
+
+MMX-backup---->
+ifs-root-stage2.ifs offset: 0x00ba0000
+ifs-root-stage2.ifs size: D41B3F00
+Found SIMFAZIT-0000-000000002 backup, will check if all complete...
+
+[31mDoing standard backup
+It will take about 5 minutes to complete.
+Please wait...
+
+[36mVersion info..... -> Backup is already there!
+FEC folders...... -> failed!
+Shadow files..... -> failed!
+Partition info... -> Backup is already there!
+Folder lists..... -> Backup is already there!
+Datasets......... -> Backup is already there!
+EEPROM........... -> Backup is already there!
+storage1......... -> Backup is already there!
+storage2......... -> Backup is already there!
+SWDL............. -> failed!
+GEM jars......... -> Backup is already there!
+lsd.jxe.......... -> Backup is already there!
+HMI folders...... -> done :-)
+RCC OFFSET's..... -> Backup is already there!
+RCC Flashlock.... -> Backup is already there!
+RCC flash dump... -> Backup is already there!
+RCC ifs-stage2... -> Backup is already there!
+MMX flash dump... -> Backup is already there!
+backing up backup
+ -> Backup part 1 is already there! -> Backup part 2 is already there!
+[00;00m
+
+MHIG_EU_AU_K1553 MU1553
+In case of errors, please check Log file on SD card.
+
+
+MMX-backup-done!

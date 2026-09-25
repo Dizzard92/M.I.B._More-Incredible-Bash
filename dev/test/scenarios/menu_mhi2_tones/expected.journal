@@ -1,0 +1,2 @@
+mount	-uw	/net/mmx/fs/sda0/
+mount	-uw	/net/mmx/mnt/app

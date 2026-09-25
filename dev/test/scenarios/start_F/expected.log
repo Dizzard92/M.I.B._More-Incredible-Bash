@@ -1,0 +1,42 @@
+ __  __     ___           ___  
+|  \/  |   |_ _|         | _ ) 
+| |\/| |    | |          | _ \ 
+|_|  |_|ore|___|ncredible|___/ash - V3.7.3 "long time ago..."
+______________________________________________________________________
+
+NOT FOR COMMERCIAL USE - IF YOU BOUGHT THIS YOU GOT RIPPED OFF
+
+Logging_MU1440-MHI2_ER_SKG13_P4526-SIMFAZIT-0000-000000001:
+PN: 5L0035020A - HW Number: H40
+Metainfo2 Variant (Variant2): FM2-M-NRH-EU-SK-MQB
+EEPROM Variant (Variant1): FM2-M-NRH-EU
+Parameter set part number: 5L003502001
+Coding: 03735200000000000000000000000000000000000000000000
+Car Model: Skoda Octavia Combi vRS (5E5) 
+VIN MIB: TMBZZZSIMULATED01 - VIN car: TMBZZZSIMULATED01
+______________________________________________________________________
+
+ls --> total 1172
+______________________________________________________________________
+
+timestamp: 2026_01_01_00_00_00----->
+
+RCC-svm---->
+Fix SVM Error (Note: The process can take some minutes...)
+extract build version...
+SvmInfo - Compressing... /net/rcc/mnt/efs-persist/SWDL/Log/SvmInfo.bin 
+CfgAckRand - Uncompressing...
+ /net/rcc/mnt/efs-persist/SWDL/Log/CfgAckRand.z to /net/rcc/mnt/efs-persist/SWDL/Log/CfgAckRand.bin
+
+Key: 1234 - CHKSum: DBE6
+
+CfgAck - Compressing... /net/rcc/mnt/efs-persist/SWDL/Log/CfgAck.bin 
+Writing to EEPROM address 3f0...
+
+Done. Try to delete DTC 1555 with any OBD2 tool!
+
+
+RCC-svm---->
+Reboot Unit... press CTRL-C to abort!!!
+
+Unit is rebooting now...

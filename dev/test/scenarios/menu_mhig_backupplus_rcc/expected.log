@@ -1,0 +1,48 @@
+ __  __     ___           ___  
+|  \/  |   |_ _|         | _ ) 
+| |\/| |    | |          | _ \ 
+|_|  |_|ore|___|ncredible|___/ash - V3.7.3 "long time ago..."
+______________________________________________________________________
+
+NOT FOR COMMERCIAL USE - IF YOU BOUGHT THIS YOU GOT RIPPED OFF
+
+Logging_MU1553-MHIG_EU_AU_K1553-SIMFAZIT-0000-000000002:
+PN: 4M0035043A - HW Number: H13
+Metainfo2 Variant (Variant2): FMU-H-EU-AU
+EEPROM Variant (Variant1): MHIG-EU-AU
+Parameter set part number: 4M003504301
+Coding: 01157600000000000000000000000000000000000000000000
+Car Model: Audi e-tron (GEN) 
+VIN MIB: WAUZZZSIMULATED02 - VIN car: -----------------
+______________________________________________________________________
+
+ls --> total 1172
+______________________________________________________________________
+
+timestamp: 2026_01_01_00_00_00----->
+
+MMX-backupplus---->
+Dump from /net/rcc/dev/fs0
+RCC/ipl/21/default/..........32+0 records in
+32+0 records out
+131072 bytes (131 kB, 128 KiB) copied, <TIME>
+ -> done :-)
+RCC/ifs-emg/21/default/.....1312+0 records in
+1312+0 records out
+5373952 bytes (5.4 MB, 5.1 MiB) copied, <TIME>
+ -> done :-)
+RCC/ifs-root/21/default/..........6144+0 records in
+6144+0 records out
+25165824 bytes (25 MB, 24 MiB) copied, <TIME>
+ -> done :-)
+RCC/efs-system/21/default/........704+0 records in
+704+0 records out
+2883584 bytes (2.9 MB, 2.8 MiB) copied, <TIME>
+ -> done :-)
+RCC/dsp/21/default/../usr/bin/dd: /net/rcc/dev/fs0: cannot skip to specified offset
+0+0 records in
+0+0 records out
+0 bytes copied, <TIME>
+ -> done :-)
+cp: invalid option -- 'c'
+Try 'cp --help' for more information.

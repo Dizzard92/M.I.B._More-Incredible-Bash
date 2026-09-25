@@ -1,0 +1,6 @@
+mount	-uw	/net/mmx/fs/sda0
+pc	i:0:0x50180CFF	5
+pc	b:0:0xC0020054:9	5
+pc	i:0:0x50186004	1
+pc	i:0x286f058c:6	1
+pc	b:0:1	0

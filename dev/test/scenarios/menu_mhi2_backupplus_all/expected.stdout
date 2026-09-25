@@ -1,0 +1,151 @@
+M.I.B. - More Incredible Bash V3.7.3 "long time ago..."
+NOT FOR COMMERCIAL USE - IF YOU BOUGHT THIS YOU GOT RIPPED OFF
+
+NOTE: NEVER interrupt the process with -Back- button or removing SD Card!!!
+CAUTION: Ensure that a external power is connected to the car on during any
+flash or programming process! Power failure during flasing/programming will
+brick your unit! - All you do and use at your own risk!
+
+Running multiple backups now: standard backup/app/gndb/bb/system
+This will take 25+ min in total
+
+MMX-backup---->
+ifs-root-stage2.ifs offset: 0x00ba0000
+ifs-root-stage2.ifs size: 1C06F300
+Found SIMFAZIT-0000-000000001 backup, will check if all complete...
+Doing standard backup
+It will take about 5 minutes to complete.
+Please wait...
+Version info..... -> done :-)
+FEC folders...... -> failed!
+Shadow files..... -> failed!
+Partition info... -> done :-)
+Folder lists..... -> done :-)
+Datasets......... -> done :-)
+EEPROM........... -> done :-)
+storage1......... -> done :-)
+storage2......... -> done :-)
+SWDL............. -> failed!
+GEM jars......... -> done :-)
+lsd.jxe.......... -> done :-)
+HMI folders...... -> done :-)
+RCC OFFSET's..... -> done :-)
+RCC Flashlock.... -> done :-)
+RCC flash dump... -> done :-)
+RCC ifs-stage2... -> done :-)
+MMX flash dump... -> done :-)
+backing up backup
+ -> part 1 done -> part 2 done :-)
+
+
+MHI2_ER_SKG13_P4526 MU1440
+In case of errors, please check Log file on SD card.
+
+MMX-backup-done!
+app.img........
+dumping app.img now
+duration: ~5min/GB
+4.0GB data
+please wait...
+there will be no additional output until you see - All done - again
+ -> failed!
+gracenotedb....
+dumping /net/mmx/mnt/gracenotedb/ now
+duration: ~5min/GB
+1.0GB data
+please wait...
+there will be no additional output until you see - All done - again
+ -> failed!
+boardbook......
+dumping /net/mmx/mnt/boardbook/ now
+duration: ~5min/GB
+1.0GB data
+please wait...
+there will be no additional output until you see - All done - again
+No boardbook on unit
+ -> done :-)
+system......
+dumping /net/mmx/mnt/system/ now
+duration: ~5min/GB
+1.0GB data
+please wait...
+there will be no additional output until you see - All done - again
+ -> failed!
+special............
+dumping /net/rcc/mnt/efs-system/ now
+dumping /net/rcc/mnt/efs-persist/ now
+dumping /net/mmx/mnt/persist/ now
+ -> failed!
+speech..........
+dumping /net/mmx/mnt/speech/ now
+duration: ~5min/GB
+1.0GB data
+please wait...
+there will be no additional output until you see - All done - again
+ -> failed!
+Use dumped RCC from SD backup
+dumping RCC images now
+duration: max. 5 minutes
+please wait...
+RCC/ipl/21/default/.......... -> done :-)
+RCC/ifs-emg/21/default/..... -> done :-)
+RCC/ifs-root/21/default/.......... -> done :-)
+RCC/efs-system/21/default/........ -> done :-)
+RCC/dsp/21/default/.. -> done :-)
+MXX export not supported yet
+ -> done :-)
+fileinfo............
+Searching and storing *.fileinfo files now
+ -> failed!
+ -> done :-)
+RSDB......
+dumping /net/mmx/mnt/boardbook/RSDB/ now
+duration: ~5min/GB
+1.0GB data
+please wait...
+there will be no additional output until you see - All done - again
+ -> failed!
+
+backupplus v0.2.0 (2023-01-17 MIB-Wiki)
+
+Usage: backupplus [OPTION]
+
+Options:
+        -app 		dump app.img
+        -apps 		dump app.img as file structure
+        -rcc 		dump RCC images
+        -mmx 		dump MMX images
+        -abd 		dump AddressBookDB
+        -gndb 		dump GraceNoteDB
+        -bb 		dump boardbook
+        -RSDB 		dump RadioStationDB
+        -fileinfo	dump *.fileinfo files
+        -media 		dump Media
+        -nav 		dump NavDB
+        -system 	dump /mnt/system
+        -special 	dump special folders
+        --help		show this help
+
+Note: Backup will only work in RCC bash!
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software Foundation,
+Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
+
+You want to support the project?
+-> Send us a copy of the /backup/ folder from your SD card
+-> Upload to https://mibsolution.one - user:guest pass:guest
+  -> folder: M.I.B_backup
+
+All done! now you can go back...

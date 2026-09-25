@@ -1,0 +1,34 @@
+M.I.B. - More Incredible Bash V3.7.3 "long time ago..."
+NOT FOR COMMERCIAL USE - IF YOU BOUGHT THIS YOU GOT RIPPED OFF
+
+NOTE: NEVER interrupt the process with -Back- button or removing SD Card!!!
+CAUTION: Ensure that a external power is connected to the car on during any
+flash or programming process! Power failure during flasing/programming will
+brick your unit! - All you do and use at your own risk!
+
+
+/net/rcc/mnt/efs-system/backup/FEC/FecContainer.fec not found
+--- FECs in use from /net/rcc/mnt/efs-persist/FEC/FecContainer.fec:
+
+
+--- Found /net/mmx/fs/sda0/patches/addFec/MHIG/AU/EU/addFecs.txt
+    Adding following FECs:
+021000EE
+--- Train: MHIG_EU_AU_K1553
+
+--- Using /net/rcc/mnt/efs-persist/FEC/FecContainer.fec
+
+--- Invalid FecContainer.fec. Generating a new one...
+--- Existing FecContainer parsed
+!!! Generation of AddedFecs.tmp failed!
+
+--- Checking if stock EL is installed
+-- Custom EL found - (sha1=)
+    Copy stock EL back to unit -> done :-)
+--- EL is restored
+
+/net/rcc/mnt/efs-system/backup/FEC/FecContainer.fec not found
+--- FECs in use from /net/rcc/mnt/efs-persist/FEC/FecContainer.fec:
+
+
+All done! Please reboot the unit!

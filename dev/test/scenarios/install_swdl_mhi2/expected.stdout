@@ -1,0 +1,49 @@
+[finalScript] for HW H40 on medium /net/mmx/fs/sda0...
+[stuffScript] Cool stuff found and executing...
+
+--- Load PNG to display during finalscript --
+No end time for image set
+--- Stop image display with -unload
+
+--- Running basic backup --------------------
+
+MMX-backup---->
+Found SIMFAZIT-0000-000000001 backup, will check if all complete...
+Doing basic backup
+It will take about 2 minutes to complete.
+Please wait...
+Version info..... -> done :-)
+FEC folders...... -> failed!
+Shadow files..... -> failed!
+Partition info... -> done :-)
+Folder lists..... -> done :-)
+Datasets......... -> done :-)
+EEPROM........... -> done :-)
+storage1......... -> done :-)
+storage2......... -> done :-)
+backing up backup
+ -> part 1 done -> part 2 skipped
+
+
+MHI2_ER_SKG13_P4526 MU1440
+In case of errors, please check Log file on SD card.
+
+MMX-backup-done!
+
+--- Running Launcher script -----------------
+
+MMX-launcher---->
+-- _Swdlautorun.txt found. Autostart already disabled
+-- Skip MOST popup enabled
+-- Illegal and withdrawn FECs removed
+-- Cleanup done!
+-- GEM.jar found
+-- GEM 4.12 is already installed
+-- MHI2 esd installed
+-- M.I.B GEM link installed
+-- activating Development Mode (GEM)...
+
+--- Unload PNG ------------------------------
+--- Stopping image display
+[stuffScript] Cool stuff DONE
+[finalScript] finished

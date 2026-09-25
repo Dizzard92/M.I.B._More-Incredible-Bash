@@ -1,0 +1,36 @@
+ __  __     ___           ___  
+|  \/  |   |_ _|         | _ ) 
+| |\/| |    | |          | _ \ 
+|_|  |_|ore|___|ncredible|___/ash - V3.7.3 "long time ago..."
+______________________________________________________________________
+
+NOT FOR COMMERCIAL USE - IF YOU BOUGHT THIS YOU GOT RIPPED OFF
+
+Logging_MU1553-MHIG_EU_AU_K1553-SIMFAZIT-0000-000000002:
+PN: 4M0035043A - HW Number: H13
+Metainfo2 Variant (Variant2): FMU-H-EU-AU
+EEPROM Variant (Variant1): MHIG-EU-AU
+Parameter set part number: 4M003504301
+Coding: 01157600000000000000000000000000000000000000000000
+Car Model: Audi e-tron (GEN) 
+VIN MIB: WAUZZZSIMULATED02 - VIN car: -----------------
+______________________________________________________________________
+
+ls --> total 1172
+______________________________________________________________________
+
+timestamp: 2026_01_01_00_00_00----->
+MMX-setlang---->
+Writing EU dataset 0x2C0 (visible_MMI_language_dataset):
+en_GB,cs_CZ,de_DE,nl_NL,fr_FR,it_IT,pl_PL,pt_PT,ru_RU,es_ES,sv_SE,tr_TR
+Writing en_GB dataset 0x280 (language dataset)
+Dataset 2D00 before the change:Dataset 2D00 after the change: Dataset 280 before the change:Dataset 280 after the change: 
+setlang done!
+
+MMX-setlang---->
+Reboot Unit...
+Unit is rebooting now...
+
+Buttons will stop working now
+Screen might turn off
+Reboot will take ~60s

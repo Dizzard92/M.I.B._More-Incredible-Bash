@@ -1,0 +1,2 @@
+mount	-uw	/net/mmx/fs/sda0
+slay	-f	j9

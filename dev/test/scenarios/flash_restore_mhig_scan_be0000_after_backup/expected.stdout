@@ -1,0 +1,70 @@
+Using SD1...
+
+
+MMX-backup---->
+Searching ifs-root-stage2.ifs offset
+It will take about 2 minutes, please wait...
+Calculating ifs-root-stage2.ifs size.
+It will take about 1 minute, please wait...
+ifs-root-stage2.ifs offset: 0x00540000
+ifs-root-stage2.ifs size: 00000000
+Found SIMFAZIT-0000-000000003 backup, will check if all complete...
+
+[31mDoing standard backup
+It will take about 5 minutes to complete.
+Please wait...
+
+[36mVersion info..... -> done :-)
+FEC folders...... -> failed!
+Shadow files..... -> failed!
+Partition info... -> done :-)
+Folder lists..... -> done :-)
+Datasets......... -> done :-)
+EEPROM........... -> done :-)
+storage1......... -> done :-)
+storage2......... -> done :-)
+SWDL............. -> failed!
+GEM jars......... -> done :-)
+lsd.jxe.......... -> done :-)
+HMI folders...... -> done :-)
+RCC OFFSET's..... -> done :-)
+RCC Flashlock.... -> done :-)
+RCC flash dump... -> done :-)
+RCC ifs-stage2... -> done :-)
+MMX flash dump... -> done :-)
+backing up backup
+ -> part 1 done -> part 2 done :-)
+[00;00m
+
+MHIG_EU_AU_K1553 MU1553
+In case of errors, please check Log file on SD card.
+
+
+MMX-backup-done!
+Using SD1...
+
+Reading OFFSETPART2 and STAGE2SIZE from backup
+ifs-root-stage2.ifs offset: 0x00540000
+ifs-root-stage2.ifs size: 00000000
+search SIMFAZIT-0000-000000003 Backup File MU1553-ifs-root-part2-0x00540000.ifs
+[33m
+
+Do NOT power down the unit while flashing!
+Do NOT remove the SD-card/USB stick!
+You have 10 seconds before flashing will start...
+[31m
+Press CTRL+C to abort!!!
+
+[00;00m10 seconds left...9...8...7...6...5...4...3...2...1...0...[31m
+
+Flashing will start now.
+
+DO NOT INTERRUPT!
+
+DURATION: ~3 Minutes
+[00;00m
+
+Flash offset unknown, flashing aborted!
+Get in contact with M.I.B team and share your backup
+Support will be added
+

@@ -16,3 +16,4 @@ dist/
 dev/.tools/
 dev/sim/out/
 __pycache__/
+dev/test/out/

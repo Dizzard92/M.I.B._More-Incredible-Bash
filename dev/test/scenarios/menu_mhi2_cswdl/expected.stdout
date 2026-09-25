@@ -1,0 +1,14 @@
+M.I.B. - More Incredible Bash V3.7.3 "long time ago..."
+NOT FOR COMMERCIAL USE - IF YOU BOUGHT THIS YOU GOT RIPPED OFF
+
+NOTE: NEVER interrupt the process with -Back- button or removing SD Card!!!
+CAUTION: Ensure that a external power is connected to the car on during any
+flash or programming process! Power failure during flasing/programming will
+brick your unit! - All you do and use at your own risk!
+
+run some SWDL cleanup
+Clears '1556 - Internal Control Module Memory Check Sum Error' from 5F
+Removes remnants from FW updates (e.g. update.txt*, illegal/withdrawn FEC)
+
+All done! now you can go back...
+Reboot unit manually to apply changes

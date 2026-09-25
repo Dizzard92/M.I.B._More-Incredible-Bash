@@ -1,0 +1,10 @@
+mount	-uw	/net/mmx/fs/sda0
+flashlock
+flashlock
+mount	-uw	/net/mmx/fs/sda0
+flashlock
+mount	-uw	/net/mmx/mnt/boardbook
+mount	-uw	/net/mmx/fs/sda0
+flashlock
+flashlock
+mount	-uw	/net/mmx/mnt/boardbook

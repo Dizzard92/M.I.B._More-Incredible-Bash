@@ -1,0 +1,86 @@
+Using SD1...
+
+
+MMX-flash---->
+ifs-root-stage2.ifs offset: 0x00ba0000
+ifs-root-stage2.ifs size: 1C06F300
+Found SIMFAZIT-0000-000000001 backup, will check if all complete...
+
+[31mDoing standard backup
+It will take about 5 minutes to complete.
+Please wait...
+
+[36mVersion info..... -> done :-)
+FEC folders...... -> failed!
+Shadow files..... -> failed!
+Partition info... -> done :-)
+Folder lists..... -> done :-)
+Datasets......... -> done :-)
+EEPROM........... -> done :-)
+storage1......... -> done :-)
+storage2......... -> done :-)
+SWDL............. -> failed!
+GEM jars......... -> done :-)
+lsd.jxe.......... -> done :-)
+HMI folders...... -> done :-)
+RCC OFFSET's..... -> done :-)
+RCC Flashlock.... -> done :-)
+RCC flash dump... -> done :-)
+RCC ifs-stage2... -> done :-)
+MMX flash dump... -> done :-)
+backing up backup
+ -> part 1 done -> part 2 done :-)
+[00;00m
+
+MHI2_ER_SKG13_P4526 MU1440
+In case of errors, please check Log file on SD card.
+
+
+MMX-flash-done!
+Train: MHI2_ER_SKG13_P4526
+OK: Patch folder /net/mmx/fs/sda0/patches/MHI2_ER_SKG13_P4526_MU1440_PATCH found on SD card
+
+OK: File MU1440-ifs-root-part2-0x00ba0000-1C06F300.ifs found in folder
+
+[33m
+
+Do NOT power down the unit while flashing!
+Do NOT remove the SD-card/USB stick!
+You have 10 seconds before flashing will start...
+[31m
+Press CTRL+C to abort!!!
+
+[00;00m10 seconds left...9...8...7...6...5...4...3...2...1...0...[31m
+
+Flashing will start now.
+
+DO NOT INTERRUPT!
+
+DURATION: ~3 Minutes
+[00;00m
+Flashing on OFFSET 0x00ba0000...
+
+There will be no further output until flash is finished!
+
+ATTENTION: Flash validation FAILED
+
+REBOOT will be CANCELED
+
+DO NOT reboot or power down  unit - read next lines carefully!!
+
+Possible reasons:
+1. Read error from SD
+2. SD card faulty
+3. File on SD corrupted
+
+Actions:
+1. Copy patch file again to SD --> try to flash again
+   You can safely remove and insert SD now
+2. Still failing --> try with a FRESH SD card
+3. Still Failing --> get in contact with experts and share your log file
+As long as you do not reboot or power down the unit the failed flash will not take effect.
+Recovery will be easier this way. However, even a rebooted unit can (most likely) be recovered with expert help and 20-50$ of hardware
+
+-- DO NOT PANIC - GET HELP --
+
+You can go back now...

@@ -1,0 +1,18 @@
+M.I.B. - More Incredible Bash V3.7.3 "long time ago..."
+NOT FOR COMMERCIAL USE - IF YOU BOUGHT THIS YOU GOT RIPPED OFF
+
+NOTE: NEVER interrupt the process with -Back- button or removing SD Card!!!
+CAUTION: Ensure that a external power is connected to the car on during any
+flash or programming process! Power failure during flasing/programming will
+brick your unit! - All you do and use at your own risk!
+
+
+MMX-installjava---->
+Backup lsd.sh
+Patching lsd.sh to run additional *.jar
+lsd.sh is patched
+total <N>
+<ls> -rwxr-xr-x 250996 GEM.jar
+-- Remove NavActiveIgnore
+File not found - navignore patch is not installed
+New patch will be installed now

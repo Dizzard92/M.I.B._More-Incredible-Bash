@@ -1,0 +1,57 @@
+Using SD1...
+
+
+MMX-flash---->
+ifs-root-stage2.ifs offset: 0x00ba0000
+ifs-root-stage2.ifs size: D41B3F00
+Found SIMFAZIT-0000-000000002 backup, will check if all complete...
+
+[31mDoing standard backup
+It will take about 5 minutes to complete.
+Please wait...
+
+[36mVersion info..... -> done :-)
+FEC folders...... -> failed!
+Shadow files..... -> failed!
+Partition info... -> done :-)
+Folder lists..... -> done :-)
+Datasets......... -> done :-)
+EEPROM........... -> done :-)
+storage1......... -> done :-)
+storage2......... -> done :-)
+SWDL............. -> failed!
+GEM jars......... -> done :-)
+lsd.jxe.......... -> done :-)
+HMI folders...... -> done :-)
+RCC OFFSET's..... -> done :-)
+RCC Flashlock.... -> done :-)
+RCC flash dump... -> done :-)
+RCC ifs-stage2... -> done :-)
+MMX flash dump... -> done :-)
+backing up backup
+ -> part 1 done -> part 2 done :-)
+[00;00m
+
+MHIG_EU_AU_K1553 MU1553
+In case of errors, please check Log file on SD card.
+
+
+MMX-flash-done!
+Train: MHIG_EU_AU_K1553
+--- Reading patch DB...
+--- Searching offset and size of root-stage2.ifs...:
+ifs-root-stage2.ifs offset: 0x00ba0000
+ifs-root-stage2.ifs size: D41B3F00
+--- OK: OFFSETPART2 in DB and RCC flash match.
+--- OK: STAGE2SIZE in DB and RCC flash match.
+--- Dumping root-stage2.ifs from RCC flash.
+    It will take about 1 minute. Please wait...
+--- Patching dumped root-stage2.ifs.
+1 processes; 0 threads;
+CPU states: 1.0% user, 1.0% kernel
+Memory: 1024M total, 100M avail, page size 4K
+--- Free RAM on unit: 100MB
+!!! Not enough RAM - Minimum required 240MB available
+   Patch can not be generated.
+!!! Reboot unit and try to run the patch again.
+You can go back now...

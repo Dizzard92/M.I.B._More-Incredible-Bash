@@ -1,0 +1,127 @@
+M.I.B. - More Incredible Bash V3.7.3 "long time ago..."
+NOT FOR COMMERCIAL USE - IF YOU BOUGHT THIS YOU GOT RIPPED OFF
+
+NOTE: NEVER interrupt the process with -Back- button or removing SD Card!!!
+CAUTION: Ensure that a external power is connected to the car on during any
+flash or programming process! Power failure during flashing/programming will
+brick your unit! - All you do and use at your own risk!
+
+
+MMX-backup---->
+ifs-root-stage2.ifs offset: 0x00ba0000
+ifs-root-stage2.ifs size: 1C06F300
+Found SIMFAZIT-0000-000000001 backup, will check if all complete...
+Doing standard backup
+It will take about 5 minutes to complete.
+Please wait...
+Version info..... -> done :-)
+FEC folders...... -> failed!
+Shadow files..... -> failed!
+Partition info... -> done :-)
+Folder lists..... -> done :-)
+Datasets......... -> done :-)
+EEPROM........... -> done :-)
+storage1......... -> done :-)
+storage2......... -> done :-)
+SWDL............. -> failed!
+GEM jars......... -> done :-)
+lsd.jxe.......... -> done :-)
+HMI folders...... -> done :-)
+RCC OFFSET's..... -> done :-)
+RCC Flashlock.... -> done :-)
+RCC flash dump... -> done :-)
+RCC ifs-stage2... -> done :-)
+MMX flash dump... -> done :-)
+backing up backup
+ -> part 1 done -> part 2 done :-)
+
+
+MHI2_ER_SKG13_P4526 MU1440
+In case of errors, please check Log file on SD card.
+
+MMX-backup-done!
+--- CarPlay and Android Auto activated now
+
+MMX-flash---->
+ifs-root-stage2.ifs offset: 0x00ba0000
+ifs-root-stage2.ifs size: 1C06F300
+Found SIMFAZIT-0000-000000001 backup, will check if all complete...
+Doing standard backup
+It will take about 5 minutes to complete.
+Please wait...
+Version info..... -> Backup is already there!
+FEC folders...... -> failed!
+Shadow files..... -> failed!
+Partition info... -> Backup is already there!
+Folder lists..... -> Backup is already there!
+Datasets......... -> Backup is already there!
+EEPROM........... -> Backup is already there!
+storage1......... -> Backup is already there!
+storage2......... -> Backup is already there!
+SWDL............. -> failed!
+GEM jars......... -> Backup is already there!
+lsd.jxe.......... -> Backup is already there!
+HMI folders...... -> done :-)
+RCC OFFSET's..... -> Backup is already there!
+RCC Flashlock.... -> Backup is already there!
+RCC flash dump... -> Backup is already there!
+RCC ifs-stage2... -> Backup is already there!
+MMX flash dump... -> Backup is already there!
+backing up backup
+ -> Backup part 1 is already there! -> Backup part 2 is already there!
+
+
+MHI2_ER_SKG13_P4526 MU1440
+In case of errors, please check Log file on SD card.
+
+MMX-flash-done!
+Train: MHI2_ER_SKG13_P4526
+OK: Patch folder /net/mmx/fs/sda0/patches/MHI2_ER_SKG13_P4526_MU1440_PATCH found on SD card
+
+OK: File MU1440-ifs-root-part2-0x00ba0000-1C06F300.ifs found in folder
+
+Do NOT power down the unit while flashing!
+Do NOT remove the SD-card/USB stick!
+Flashing will start now.
+DO NOT INTERRUPT!
+
+DURATION: ~3 Minutes
+Flashing on OFFSET 0x00ba0000...
+
+There will be no further output until flash is finished!
+
+OK: Flash checked and valid
+Saving RCC flash to SD /backup/logs/
+Duration ~3 minutes.
+Please wait...
+ -> done :-)
+--- Found /net/mmx/fs/sda0/patches/addFec/MHI2/SK/ER/addFecs.txt
+    Adding following FECs:
+00030000
+00040100
+00050000
+00060100
+00060200
+00060300
+00060400
+00060800
+00060900
+00070200
+00070400
+08300008
+--- Train: MHI2_ER_SKG13_P4526
+
+--- Using /net/rcc/mnt/efs-persist/FEC/FecContainer.fec
+
+--- Invalid FecContainer.fec. Generating a new one...
+--- Existing FecContainer parsed
+--- AddedFecs.tmp is generated.
+--- FecContainer.fec is generated.
+--- Copying /tmp/FecContainer.fec to /net/rcc/mnt/efs-persist/FEC/
+ -> done :-)
+--- Checking if stock EL is installed
+-- Custom EL found - (sha1=)
+    Copy stock EL back to unit -> done :-)
+--- EL is restored
+Reboot Unit...
+Unit is rebooting now...

@@ -1,0 +1,101 @@
+M.I.B. - More Incredible Bash V3.7.3 "long time ago..."
+
+WARNING! NEVER interrupt the process with -Back- button
+or remove SD card!!!
+CAUTION: Make sure the external power is connected to the car
+during any flash or programming process! Power failure during
+flashing/programming will brick your unit!
+All you do is at your own risk!
+
+MMX-backup---->
+ifs-root-stage2.ifs offset: 0x00ba0000
+ifs-root-stage2.ifs size: D41B3F00
+Found SIMFAZIT-0000-000000002 backup, will check if all complete...
+Doing standard backup
+It will take about 5 minutes to complete.
+Please wait...
+Version info..... -> done :-)
+FEC folders...... -> failed!
+Shadow files..... -> failed!
+Partition info... -> done :-)
+Folder lists..... -> done :-)
+Datasets......... -> done :-)
+EEPROM........... -> done :-)
+storage1......... -> done :-)
+storage2......... -> done :-)
+SWDL............. -> failed!
+GEM jars......... -> done :-)
+lsd.jxe.......... -> done :-)
+HMI folders...... -> done :-)
+RCC OFFSET's..... -> done :-)
+RCC Flashlock.... -> done :-)
+RCC flash dump... -> done :-)
+RCC ifs-stage2... -> done :-)
+MMX flash dump... -> done :-)
+backing up backup
+ -> part 1 done -> part 2 done :-)
+
+
+MHIG_EU_AU_K1553 MU1553
+In case of errors, please check Log file on SD card.
+
+MMX-backup-done!
+
+Starting EU conversion.
+Multiple scripts will be run in series. Please wait...
+
+MMX-settrain---->
+Current train: MHIG_EU_AU_K1553
+Skipping. Your train is already EU!
+MMX-setreg---->
+Writing EU language datasets to 5F...
+MMX-setlang---->
+Writing EU dataset 0x2C0 (visible_MMI_language_dataset):
+en_GB,cs_CZ,de_DE,nl_NL,fr_FR,it_IT,pl_PL,pt_PT,ru_RU,es_ES,sv_SE,tr_TR
+Writing en_GB dataset 0x280 (language dataset)
+
+setlang done!
+
+Changing coding and adaptations to EU:
+--- Summer time algo
+--- FM Band setting
+--- AM Band setting
+--- RDS switch off
+--- AF functionality on
+--- Radiotext+ on
+--- PI Ignore off
+--- AM disable on
+--- RDS deactivation off
+--- AF deactivation off
+--- Navigation Country
+--- Navigation on
+--- Import media
+--- Media Ripping
+--- Traffic signs on the map
+--- Regional Codes DVD
+--- Regional Codes Blueray
+--- Regional Codes DVD Counter
+--- Regional Codes Blueray Counter
+--- TMCPro EU
+--- Gracenote local ON
+--- Radio stationlogo DB
+--- SDS region Flag
+--- Variant region
+--- Writing region to EEPROM address E0...
+--- Disable variant feature byte sirius
+
+setreg done!
+MMX-setvariant---->
+---- Read original Variant_1 from unit
+---- Variant_1: MHIG-EU-AU
+---- Read original Variant_2 from unit
+---- Variant_2: FMU-H-EU-AU
+Reading Variant_2 from EEPROM...
+Reading Unit Class from EEPROM...
+Reading Feature bits from EEPROM...
+Reading Region from EEPROM...
+Type unknown
+Error occured during creation of Variant_1
+Check messages above
+No changes to Variant_1 will be applied
+

@@ -1,0 +1,40 @@
+mount	-uw	/net/mmx/fs/sda0
+flashlock
+flashlock
+mount	-uw	/net/mmx/fs/sda0
+flashlock
+mount	-uw	/net/mmx/mnt/boardbook
+mount	-uw	/net/mmx/fs/sda0
+mount	-uw	/net/mmx/fs/sda0
+mount	-uw	/net/rcc/mnt/efs-persist
+mount	-uw	/net/mmx/fs/sda0
+dumb_persistence_writer	-f	-P	0	3221422086	0C656E5F474263735F435A64655F44456E6C5F4E4C66725F465269745F4954706C5F504C70745F505472755F525565735F455373765F534574725F5452000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000031301095
+dumb_persistence_writer	-f	-P	0	3221422085	656E5F474200656E5F474200656E5F4742004331E45D
+dumb_persistence_writer	-f	-t	int	28442848	503	2
+dumb_persistence_writer	-f	-t	int	0	1343759375	1
+dumb_persistence_writer	-f	-t	int	0	1343759600	1
+dumb_persistence_writer	-f	-t	int	0	1343763457	0
+dumb_persistence_writer	-f	-t	int	0	1343763458	1
+dumb_persistence_writer	-f	-t	int	0	1343763464	1
+dumb_persistence_writer	-f	-t	int	0	1343763472	0
+dumb_persistence_writer	-f	-t	int	0	1343764482	1
+dumb_persistence_writer	-f	-t	int	0	1343764496	0
+dumb_persistence_writer	-f	-t	int	0	1343764512	0
+dumb_persistence_writer	-f	-t	int	0	1343753471	1
+dumb_persistence_writer	-f	-t	int	0	1343774724	1
+dumb_persistence_writer	-f	-t	int	0	1343774736	1
+dumb_persistence_writer	-f	-t	int	0	1343774752	1
+dumb_persistence_writer	-f	-t	int	0	1343774784	1
+dumb_persistence_writer	-f	-t	int	28442848	515	2
+dumb_persistence_writer	-f	-t	int	28442848	516	2
+dumb_persistence_writer	-f	-t	int	28442848	517	5
+dumb_persistence_writer	-f	-t	int	28442848	518	5
+dumb_persistence_writer	-f	-t	int	28442848	520	32783
+dumb_persistence_writer	-f	-P	-L	1	-O	9	0	3221356628	F
+dumb_persistence_writer	-f	-P	-L	1	-O	8	0	3221356628	F
+dumb_persistence_writer	-f	-P	-L	8	-O	48	0	3221356628	01
+dumb_persistence_writer	-f	-P	-L	8	-O	72	0	3221356628	01
+dumb_persistence_writer	-f	-t	int	678364556	9	2
+modifyE2P	w	E0	02
+dumb_persistence_writer	-f	-t	int	678364556	8	0
+mount	-uw	/net/mmx/fs/sda0

@@ -1,0 +1,12 @@
+mount	-uw	/net/mmx/fs/sda0
+mount	-uw	/net/mmx/fs/sda0
+mount	-uw	/net/mmx/mnt/app
+mount	-uw	/net/rcc/mnt/efs-persist
+mount	-ur	/net/mmx/mnt/app
+mount	-ur	/net/rcc/mnt/efs-persist
+mount	-uw	/net/mmx/fs/sda0
+mount	-uw	/net/mmx/mnt/app
+mount	-uw	/net/rcc/mnt/efs-persist
+mount	-ur	/net/mmx/mnt/app
+mount	-ur	/net/rcc/mnt/efs-persist
+mount	-uw	/net/mmx/fs/sda0

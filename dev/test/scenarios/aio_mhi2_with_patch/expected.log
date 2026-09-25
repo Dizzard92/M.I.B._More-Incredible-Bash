@@ -1,0 +1,699 @@
+ __  __     ___           ___  
+|  \/  |   |_ _|         | _ ) 
+| |\/| |    | |          | _ \ 
+|_|  |_|ore|___|ncredible|___/ash - V3.7.3 "long time ago..."
+______________________________________________________________________
+
+NOT FOR COMMERCIAL USE - IF YOU BOUGHT THIS YOU GOT RIPPED OFF
+
+Logging_MU1440-MHI2_ER_SKG13_P4526-SIMFAZIT-0000-000000001:
+PN: 5L0035020A - HW Number: H40
+Metainfo2 Variant (Variant2): FM2-M-NRH-EU-SK-MQB
+EEPROM Variant (Variant1): FM2-M-NRH-EU
+Parameter set part number: 5L003502001
+Coding: 03735200000000000000000000000000000000000000000000
+Car Model: Skoda Octavia Combi vRS (5E5) 
+VIN MIB: TMBZZZSIMULATED01 - VIN car: TMBZZZSIMULATED01
+______________________________________________________________________
+
+ls --> total 1172
+______________________________________________________________________
+
+timestamp: 2026_01_01_00_00_00----->
+
+MMX-backup---->
+ifs-root-stage2.ifs offset: 0x00ba0000
+ifs-root-stage2.ifs size: 1C06F300
+Found SIMFAZIT-0000-000000001 backup, will check if all complete...
+Doing standard backup
+It will take about 5 minutes to complete.
+Please wait...
+Version info.....cp: cannot stat '/net/mmx/mnt/app/eso/hmi/splashscreen/StartupImageConfig.txt': No such file or directory
+
+timestamp: 2026_01_01_00_00_00----->
+
+MMX-allversions---->
+cat: /net/mmx/mnt/app/eso/hmi/lsd/lang_hmi_builtin.config: No such file or directory
+cat: /net/mmx/net/rcc/dev/shmem/version.txt: No such file or directory
+cat: /net/mmx/mnt/system/etc/project.txt: No such file or directory
+head: cannot open '/net/mmx/mnt/app/img_ver.txt' for reading: No such file or directory
+cat: /net/mmx/mnt/app/version_info.txt: No such file or directory
+cat: /net/mmx/mnt/app/version_info.txt: No such file or directory
+cat: /net/mmx/mnt/app/version_info.txt: No such file or directory
+cat: /net/mmx/mnt/app/version_info.txt: No such file or directory
+cat: /net/mmx/mnt/app/version_info.txt: No such file or directory
+cat: /net/mmx/mnt/app/version_info.txt: No such file or directory
+cat: /net/mmx/mnt/app/version_info.txt: No such file or directory
+cat: /net/mmx/mnt/app/version_info.txt: No such file or directory
+ls: cannot access '/net/mmx/mnt/app/speech/hmi/??_??': No such file or directory
+grep: /net/mmx/mnt/app/version_info.txt: No such file or directory
+grep: /net/mmx/mnt/app/version_info.txt: No such file or directory
+grep: /net/mmx/mnt/app/version_info.txt: No such file or directory
+E: /net/mmx/fs/sda0/apps/allversions[485]: cd: /net/mmx/tmp: No such file or directory
+cat: /net/mmx/dev/nvsku/bom: No such file or directory
+cat: /net/mmx/dev/nvsku/project: No such file or directory
+cat: /net/mmx/dev/nvsku/sku: No such file or directory
+cat: /net/mmx/dev/nvsku/rev: No such file or directory
+cat: /net/mmx/dev/nvsku/serial_num: No such file or directory
+ -> done :-)
+FEC folders......cp: invalid option -- 'c'
+Try 'cp --help' for more information.
+cp: invalid option -- 'c'
+Try 'cp --help' for more information.
+ -> failed!
+Shadow files.....cp: cannot stat '/net/rcc/etc/shadow_rcc': No such file or directory
+cp: cannot stat '/net/rcc/etc/shadow': No such file or directory
+ -> failed!
+Partition info...cat: /net/mmx/etc/fstab: No such file or directory
+W: /net/mmx/fs/sda0/apps/backup[569]: /net/mmx/bin/fdisk: inaccessible or not found
+W: /net/mmx/fs/sda0/apps/backup[569]: /net/mmx/bin/fdisk: inaccessible or not found
+ -> done :-)
+Folder lists.....ls: cannot access '/net/rcc/bin': No such file or directory
+ls: cannot access '/net/rcc/sbin': No such file or directory
+ls: cannot access '/net/mmx/bin': No such file or directory
+ls: cannot access '/net/mmx/sbin': No such file or directory
+ls: cannot access '/net/mmx/usr/bin': No such file or directory
+ls: cannot access '/net/mmx/mnt/app/armle/bin': No such file or directory
+ls: cannot access '/net/mmx/mnt/app/armle/usr/bin': No such file or directory
+ls: cannot access '/net/mmx/mnt/media/': No such file or directory
+ls: cannot access '/net/mmx/mnt/gracenotedb/': No such file or directory
+ls: cannot access '/net/mmx/mnt/adb/': No such file or directory
+ls: cannot access '/net/mmx/mnt/navdb/': No such file or directory
+ -> done :-)
+Datasets......... -> done :-)
+EEPROM........... -> done :-)
+storage1......... -> done :-)
+storage2......... -> done :-)
+SWDL.............cp: invalid option -- 'c'
+Try 'cp --help' for more information.
+ -> failed!
+GEM jars......... -> done :-)
+lsd.jxe.......... -> done :-)
+HMI folders...... -> done :-)
+RCC OFFSET's..... -> done :-)
+RCC Flashlock.... -> done :-)
+RCC flash dump... -> done :-)
+RCC ifs-stage2...7488+0 records in
+7488+0 records out
+30670848 bytes (31 MB, 29 MiB) copied, <TIME>
+ -> done :-)
+MMX flash dump... -> done :-)
+backing up backupcp: cannot stat '/net/mmx/fs/sda0/backup/MU1440-MHI2_ER_SKG13_P4526-SIMFAZIT-0000-000000001/FEC/': No such file or directory
+ -> part 1 done
+ls -als /net/mmx/mnt/boardbook --> total 12
+Free space in /net/mmx/mnt/boardbook 3.0Gbytes
+
+MMX-backup-done!
+
+timestamp: 2026_01_01_00_00_00----->
+
+MMX-carp---->
+--- CarPlay and Android Auto activated now
+
+timestamp: 2026_01_01_00_00_00----->
+
+MMX-flash---->
+
+MMX-flash---->
+ifs-root-stage2.ifs offset: 0x00ba0000
+ifs-root-stage2.ifs size: 1C06F300
+Found SIMFAZIT-0000-000000001 backup, will check if all complete...
+Doing standard backup
+It will take about 5 minutes to complete.
+Please wait...
+Version info..... -> Backup is already there!
+FEC folders......cp: invalid option -- 'c'
+Try 'cp --help' for more information.
+cp: invalid option -- 'c'
+Try 'cp --help' for more information.
+ -> failed!
+Shadow files.....cp: cannot stat '/net/rcc/etc/shadow_rcc': No such file or directory
+cp: cannot stat '/net/rcc/etc/shadow': No such file or directory
+ -> failed!
+Partition info... -> Backup is already there!
+Folder lists..... -> Backup is already there!
+Datasets......... -> Backup is already there!
+EEPROM........... -> Backup is already there!
+storage1......... -> Backup is already there!
+storage2......... -> Backup is already there!
+SWDL.............cp: invalid option -- 'c'
+Try 'cp --help' for more information.
+ -> failed!
+GEM jars......... -> Backup is already there!
+lsd.jxe.......... -> Backup is already there!
+HMI folders...... -> done :-)
+RCC OFFSET's..... -> Backup is already there!
+RCC Flashlock.... -> Backup is already there!
+RCC flash dump... -> Backup is already there!
+RCC ifs-stage2... -> Backup is already there!
+MMX flash dump... -> Backup is already there!
+backing up backup -> Backup part 1 is already there! -> Backup part 2 is already there!
+
+ls -als /net/mmx/mnt/boardbook --> total 12
+Free space in /net/mmx/mnt/boardbook 3.0Gbytes
+
+MMX-flash-done!
+
+OK: Patch folder /net/mmx/fs/sda0/patches/MHI2_ER_SKG13_P4526_MU1440_PATCH found on SD card
+
+OK: File MU1440-ifs-root-part2-0x00ba0000-1C06F300.ifs found in folder
+
+
+ 1 image type=1(IPL     ) 000000 len (262144)
+ 2 image type=2(IFS     ) 040000 len (8126464)
+ 3 image type=2(IFS     ) ba0000 len (15926812)
+ 4 image type=3(EFS     ) f00000 len (1048576)
+Flashing on OFFSET 0x00ba0000...
+
+There will be no further output until flash is finished!
+
+
+flashit (sim) ...................................... erasing     block 0000 at 0x00ba0000
+flashit (sim) ...................................... erasing     block 0001 at 0x00bb0000
+flashit (sim) ...................................... erasing     block 0002 at 0x00bc0000
+flashit (sim) ...................................... erasing     block 0003 at 0x00bd0000
+flashit (sim) ...................................... erasing     block 0004 at 0x00be0000
+flashit (sim) ...................................... erasing     block 0005 at 0x00bf0000
+flashit (sim) ...................................... erasing     block 0006 at 0x00c00000
+flashit (sim) ...................................... erasing     block 0007 at 0x00c10000
+flashit (sim) ...................................... erasing     block 0008 at 0x00c20000
+flashit (sim) ...................................... erasing     block 0009 at 0x00c30000
+flashit (sim) ...................................... erasing     block 0010 at 0x00c40000
+flashit (sim) ...................................... erasing     block 0011 at 0x00c50000
+flashit (sim) ...................................... erasing     block 0012 at 0x00c60000
+flashit (sim) ...................................... erasing     block 0013 at 0x00c70000
+flashit (sim) ...................................... erasing     block 0014 at 0x00c80000
+flashit (sim) ...................................... erasing     block 0015 at 0x00c90000
+flashit (sim) ...................................... erasing     block 0016 at 0x00ca0000
+flashit (sim) ...................................... erasing     block 0017 at 0x00cb0000
+flashit (sim) ...................................... erasing     block 0018 at 0x00cc0000
+flashit (sim) ...................................... erasing     block 0019 at 0x00cd0000
+flashit (sim) ...................................... erasing     block 0020 at 0x00ce0000
+flashit (sim) ...................................... erasing     block 0021 at 0x00cf0000
+flashit (sim) ...................................... erasing     block 0022 at 0x00d00000
+flashit (sim) ...................................... erasing     block 0023 at 0x00d10000
+flashit (sim) ...................................... erasing     block 0024 at 0x00d20000
+flashit (sim) ...................................... erasing     block 0025 at 0x00d30000
+flashit (sim) ...................................... erasing     block 0026 at 0x00d40000
+flashit (sim) ...................................... erasing     block 0027 at 0x00d50000
+flashit (sim) ...................................... erasing     block 0028 at 0x00d60000
+flashit (sim) ...................................... erasing     block 0029 at 0x00d70000
+flashit (sim) ...................................... erasing     block 0030 at 0x00d80000
+flashit (sim) ...................................... erasing     block 0031 at 0x00d90000
+flashit (sim) ...................................... erasing     block 0032 at 0x00da0000
+flashit (sim) ...................................... erasing     block 0033 at 0x00db0000
+flashit (sim) ...................................... erasing     block 0034 at 0x00dc0000
+flashit (sim) ...................................... erasing     block 0035 at 0x00dd0000
+flashit (sim) ...................................... erasing     block 0036 at 0x00de0000
+flashit (sim) ...................................... erasing     block 0037 at 0x00df0000
+flashit (sim) ...................................... erasing     block 0038 at 0x00e00000
+flashit (sim) ...................................... erasing     block 0039 at 0x00e10000
+flashit (sim) ...................................... erasing     block 0040 at 0x00e20000
+flashit (sim) ...................................... erasing     block 0041 at 0x00e30000
+flashit (sim) ...................................... erasing     block 0042 at 0x00e40000
+flashit (sim) ...................................... erasing     block 0043 at 0x00e50000
+flashit (sim) ...................................... erasing     block 0044 at 0x00e60000
+flashit (sim) ...................................... erasing     block 0045 at 0x00e70000
+flashit (sim) ...................................... erasing     block 0046 at 0x00e80000
+flashit (sim) ...................................... erasing     block 0047 at 0x00e90000
+flashit (sim) ...................................... erasing     block 0048 at 0x00ea0000
+flashit (sim) ...................................... erasing     block 0049 at 0x00eb0000
+flashit (sim) ...................................... erasing     block 0050 at 0x00ec0000
+flashit (sim) ...................................... erasing     block 0051 at 0x00ed0000
+flashit (sim) ...................................... erasing     block 0052 at 0x00ee0000
+flashit (sim) ...................................... erasing     block 0053 at 0x00ef0000
+flashit (sim) ...................................... erasing     block 0054 at 0x00f00000
+flashit (sim) ...................................... erasing     block 0055 at 0x00f10000
+flashit (sim) ...................................... erasing     block 0056 at 0x00f20000
+flashit (sim) ...................................... erasing     block 0057 at 0x00f30000
+flashit (sim) ...................................... erasing     block 0058 at 0x00f40000
+flashit (sim) ...................................... erasing     block 0059 at 0x00f50000
+flashit (sim) ...................................... erasing     block 0060 at 0x00f60000
+flashit (sim) ...................................... erasing     block 0061 at 0x00f70000
+flashit (sim) ...................................... erasing     block 0062 at 0x00f80000
+flashit (sim) ...................................... erasing     block 0063 at 0x00f90000
+flashit (sim) ...................................... erasing     block 0064 at 0x00fa0000
+flashit (sim) ...................................... erasing     block 0065 at 0x00fb0000
+flashit (sim) ...................................... erasing     block 0066 at 0x00fc0000
+flashit (sim) ...................................... erasing     block 0067 at 0x00fd0000
+flashit (sim) ...................................... erasing     block 0068 at 0x00fe0000
+flashit (sim) ...................................... erasing     block 0069 at 0x00ff0000
+flashit (sim) ...................................... erasing     block 0070 at 0x01000000
+flashit (sim) ...................................... erasing     block 0071 at 0x01010000
+flashit (sim) ...................................... erasing     block 0072 at 0x01020000
+flashit (sim) ...................................... erasing     block 0073 at 0x01030000
+flashit (sim) ...................................... erasing     block 0074 at 0x01040000
+flashit (sim) ...................................... erasing     block 0075 at 0x01050000
+flashit (sim) ...................................... erasing     block 0076 at 0x01060000
+flashit (sim) ...................................... erasing     block 0077 at 0x01070000
+flashit (sim) ...................................... erasing     block 0078 at 0x01080000
+flashit (sim) ...................................... erasing     block 0079 at 0x01090000
+flashit (sim) ...................................... erasing     block 0080 at 0x010a0000
+flashit (sim) ...................................... erasing     block 0081 at 0x010b0000
+flashit (sim) ...................................... erasing     block 0082 at 0x010c0000
+flashit (sim) ...................................... erasing     block 0083 at 0x010d0000
+flashit (sim) ...................................... erasing     block 0084 at 0x010e0000
+flashit (sim) ...................................... erasing     block 0085 at 0x010f0000
+flashit (sim) ...................................... erasing     block 0086 at 0x01100000
+flashit (sim) ...................................... erasing     block 0087 at 0x01110000
+flashit (sim) ...................................... erasing     block 0088 at 0x01120000
+flashit (sim) ...................................... erasing     block 0089 at 0x01130000
+flashit (sim) ...................................... erasing     block 0090 at 0x01140000
+flashit (sim) ...................................... erasing     block 0091 at 0x01150000
+flashit (sim) ...................................... erasing     block 0092 at 0x01160000
+flashit (sim) ...................................... erasing     block 0093 at 0x01170000
+flashit (sim) ...................................... erasing     block 0094 at 0x01180000
+flashit (sim) ...................................... erasing     block 0095 at 0x01190000
+flashit (sim) ...................................... erasing     block 0096 at 0x011a0000
+flashit (sim) ...................................... erasing     block 0097 at 0x011b0000
+flashit (sim) ...................................... erasing     block 0098 at 0x011c0000
+flashit (sim) ...................................... erasing     block 0099 at 0x011d0000
+flashit (sim) ...................................... erasing     block 0100 at 0x011e0000
+flashit (sim) ...................................... erasing     block 0101 at 0x011f0000
+flashit (sim) ...................................... erasing     block 0102 at 0x01200000
+flashit (sim) ...................................... erasing     block 0103 at 0x01210000
+flashit (sim) ...................................... erasing     block 0104 at 0x01220000
+flashit (sim) ...................................... erasing     block 0105 at 0x01230000
+flashit (sim) ...................................... erasing     block 0106 at 0x01240000
+flashit (sim) ...................................... erasing     block 0107 at 0x01250000
+flashit (sim) ...................................... erasing     block 0108 at 0x01260000
+flashit (sim) ...................................... erasing     block 0109 at 0x01270000
+flashit (sim) ...................................... erasing     block 0110 at 0x01280000
+flashit (sim) ...................................... erasing     block 0111 at 0x01290000
+flashit (sim) ...................................... erasing     block 0112 at 0x012a0000
+flashit (sim) ...................................... erasing     block 0113 at 0x012b0000
+flashit (sim) ...................................... erasing     block 0114 at 0x012c0000
+flashit (sim) ...................................... erasing     block 0115 at 0x012d0000
+flashit (sim) ...................................... erasing     block 0116 at 0x012e0000
+flashit (sim) ...................................... erasing     block 0117 at 0x012f0000
+flashit (sim) ...................................... erasing     block 0118 at 0x01300000
+flashit (sim) ...................................... erasing     block 0119 at 0x01310000
+flashit (sim) ...................................... erasing     block 0120 at 0x01320000
+flashit (sim) ...................................... erasing     block 0121 at 0x01330000
+flashit (sim) ...................................... erasing     block 0122 at 0x01340000
+flashit (sim) ...................................... erasing     block 0123 at 0x01350000
+flashit (sim) ...................................... erasing     block 0124 at 0x01360000
+flashit (sim) ...................................... erasing     block 0125 at 0x01370000
+flashit (sim) ...................................... erasing     block 0126 at 0x01380000
+flashit (sim) ...................................... erasing     block 0127 at 0x01390000
+flashit (sim) ...................................... erasing     block 0128 at 0x013a0000
+flashit (sim) ...................................... erasing     block 0129 at 0x013b0000
+flashit (sim) ...................................... erasing     block 0130 at 0x013c0000
+flashit (sim) ...................................... erasing     block 0131 at 0x013d0000
+flashit (sim) ...................................... erasing     block 0132 at 0x013e0000
+flashit (sim) ...................................... erasing     block 0133 at 0x013f0000
+flashit (sim) ...................................... erasing     block 0134 at 0x01400000
+flashit (sim) ...................................... erasing     block 0135 at 0x01410000
+flashit (sim) ...................................... erasing     block 0136 at 0x01420000
+flashit (sim) ...................................... erasing     block 0137 at 0x01430000
+flashit (sim) ...................................... erasing     block 0138 at 0x01440000
+flashit (sim) ...................................... erasing     block 0139 at 0x01450000
+flashit (sim) ...................................... erasing     block 0140 at 0x01460000
+flashit (sim) ...................................... erasing     block 0141 at 0x01470000
+flashit (sim) ...................................... erasing     block 0142 at 0x01480000
+flashit (sim) ...................................... erasing     block 0143 at 0x01490000
+flashit (sim) ...................................... erasing     block 0144 at 0x014a0000
+flashit (sim) ...................................... erasing     block 0145 at 0x014b0000
+flashit (sim) ...................................... erasing     block 0146 at 0x014c0000
+flashit (sim) ...................................... erasing     block 0147 at 0x014d0000
+flashit (sim) ...................................... erasing     block 0148 at 0x014e0000
+flashit (sim) ...................................... erasing     block 0149 at 0x014f0000
+flashit (sim) ...................................... erasing     block 0150 at 0x01500000
+flashit (sim) ...................................... erasing     block 0151 at 0x01510000
+flashit (sim) ...................................... erasing     block 0152 at 0x01520000
+flashit (sim) ...................................... erasing     block 0153 at 0x01530000
+flashit (sim) ...................................... erasing     block 0154 at 0x01540000
+flashit (sim) ...................................... erasing     block 0155 at 0x01550000
+flashit (sim) ...................................... erasing     block 0156 at 0x01560000
+flashit (sim) ...................................... erasing     block 0157 at 0x01570000
+flashit (sim) ...................................... erasing     block 0158 at 0x01580000
+flashit (sim) ...................................... erasing     block 0159 at 0x01590000
+flashit (sim) ...................................... erasing     block 0160 at 0x015a0000
+flashit (sim) ...................................... erasing     block 0161 at 0x015b0000
+flashit (sim) ...................................... erasing     block 0162 at 0x015c0000
+flashit (sim) ...................................... erasing     block 0163 at 0x015d0000
+flashit (sim) ...................................... erasing     block 0164 at 0x015e0000
+flashit (sim) ...................................... erasing     block 0165 at 0x015f0000
+flashit (sim) ...................................... erasing     block 0166 at 0x01600000
+flashit (sim) ...................................... erasing     block 0167 at 0x01610000
+flashit (sim) ...................................... erasing     block 0168 at 0x01620000
+flashit (sim) ...................................... erasing     block 0169 at 0x01630000
+flashit (sim) ...................................... erasing     block 0170 at 0x01640000
+flashit (sim) ...................................... erasing     block 0171 at 0x01650000
+flashit (sim) ...................................... erasing     block 0172 at 0x01660000
+flashit (sim) ...................................... erasing     block 0173 at 0x01670000
+flashit (sim) ...................................... erasing     block 0174 at 0x01680000
+flashit (sim) ...................................... erasing     block 0175 at 0x01690000
+flashit (sim) ...................................... erasing     block 0176 at 0x016a0000
+flashit (sim) ...................................... erasing     block 0177 at 0x016b0000
+flashit (sim) ...................................... erasing     block 0178 at 0x016c0000
+flashit (sim) ...................................... erasing     block 0179 at 0x016d0000
+flashit (sim) ...................................... erasing     block 0180 at 0x016e0000
+flashit (sim) ...................................... erasing     block 0181 at 0x016f0000
+flashit (sim) ...................................... erasing     block 0182 at 0x01700000
+flashit (sim) ...................................... erasing     block 0183 at 0x01710000
+flashit (sim) ...................................... erasing     block 0184 at 0x01720000
+flashit (sim) ...................................... erasing     block 0185 at 0x01730000
+flashit (sim) ...................................... erasing     block 0186 at 0x01740000
+flashit (sim) ...................................... erasing     block 0187 at 0x01750000
+flashit (sim) ...................................... erasing     block 0188 at 0x01760000
+flashit (sim) ...................................... erasing     block 0189 at 0x01770000
+flashit (sim) ...................................... erasing     block 0190 at 0x01780000
+flashit (sim) ...................................... erasing     block 0191 at 0x01790000
+flashit (sim) ...................................... erasing     block 0192 at 0x017a0000
+flashit (sim) ...................................... erasing     block 0193 at 0x017b0000
+flashit (sim) ...................................... erasing     block 0194 at 0x017c0000
+flashit (sim) ...................................... erasing     block 0195 at 0x017d0000
+flashit (sim) ...................................... erasing     block 0196 at 0x017e0000
+flashit (sim) ...................................... erasing     block 0197 at 0x017f0000
+flashit (sim) ...................................... erasing     block 0198 at 0x01800000
+flashit (sim) ...................................... erasing     block 0199 at 0x01810000
+flashit (sim) ...................................... erasing     block 0200 at 0x01820000
+flashit (sim) ...................................... erasing     block 0201 at 0x01830000
+flashit (sim) ...................................... erasing     block 0202 at 0x01840000
+flashit (sim) ...................................... erasing     block 0203 at 0x01850000
+flashit (sim) ...................................... erasing     block 0204 at 0x01860000
+flashit (sim) ...................................... erasing     block 0205 at 0x01870000
+flashit (sim) ...................................... erasing     block 0206 at 0x01880000
+flashit (sim) ...................................... erasing     block 0207 at 0x01890000
+flashit (sim) ...................................... erasing     block 0208 at 0x018a0000
+flashit (sim) ...................................... erasing     block 0209 at 0x018b0000
+flashit (sim) ...................................... erasing     block 0210 at 0x018c0000
+flashit (sim) ...................................... erasing     block 0211 at 0x018d0000
+flashit (sim) ...................................... erasing     block 0212 at 0x018e0000
+flashit (sim) ...................................... erasing     block 0213 at 0x018f0000
+flashit (sim) ...................................... erasing     block 0214 at 0x01900000
+flashit (sim) ...................................... erasing     block 0215 at 0x01910000
+flashit (sim) ...................................... erasing     block 0216 at 0x01920000
+flashit (sim) ...................................... erasing     block 0217 at 0x01930000
+flashit (sim) ...................................... erasing     block 0218 at 0x01940000
+flashit (sim) ...................................... erasing     block 0219 at 0x01950000
+flashit (sim) ...................................... erasing     block 0220 at 0x01960000
+flashit (sim) ...................................... erasing     block 0221 at 0x01970000
+flashit (sim) ...................................... erasing     block 0222 at 0x01980000
+flashit (sim) ...................................... erasing     block 0223 at 0x01990000
+flashit (sim) ...................................... erasing     block 0224 at 0x019a0000
+flashit (sim) ...................................... erasing     block 0225 at 0x019b0000
+flashit (sim) ...................................... erasing     block 0226 at 0x019c0000
+flashit (sim) ...................................... erasing     block 0227 at 0x019d0000
+flashit (sim) ...................................... erasing     block 0228 at 0x019e0000
+flashit (sim) ...................................... erasing     block 0229 at 0x019f0000
+flashit (sim) ...................................... erasing     block 0230 at 0x01a00000
+flashit (sim) ...................................... erasing     block 0231 at 0x01a10000
+flashit (sim) ...................................... erasing     block 0232 at 0x01a20000
+flashit (sim) ...................................... erasing     block 0233 at 0x01a30000
+flashit (sim) ...................................... erasing     block 0234 at 0x01a40000
+flashit (sim) ...................................... erasing     block 0235 at 0x01a50000
+flashit (sim) ...................................... erasing     block 0236 at 0x01a60000
+flashit (sim) ...................................... erasing     block 0237 at 0x01a70000
+flashit (sim) ...................................... erasing     block 0238 at 0x01a80000
+flashit (sim) ...................................... erasing     block 0239 at 0x01a90000
+flashit (sim) ...................................... erasing     block 0240 at 0x01aa0000
+flashit (sim) ...................................... erasing     block 0241 at 0x01ab0000
+flashit (sim) ...................................... erasing     block 0242 at 0x01ac0000
+flashit (sim) ...................................... erasing     block 0243 at 0x01ad0000
+flashit (sim) ...................................... programming block 0000 at 0x00ba0000
+flashit (sim) ...................................... programming block 0001 at 0x00bb0000
+flashit (sim) ...................................... programming block 0002 at 0x00bc0000
+flashit (sim) ...................................... programming block 0003 at 0x00bd0000
+flashit (sim) ...................................... programming block 0004 at 0x00be0000
+flashit (sim) ...................................... programming block 0005 at 0x00bf0000
+flashit (sim) ...................................... programming block 0006 at 0x00c00000
+flashit (sim) ...................................... programming block 0007 at 0x00c10000
+flashit (sim) ...................................... programming block 0008 at 0x00c20000
+flashit (sim) ...................................... programming block 0009 at 0x00c30000
+flashit (sim) ...................................... programming block 0010 at 0x00c40000
+flashit (sim) ...................................... programming block 0011 at 0x00c50000
+flashit (sim) ...................................... programming block 0012 at 0x00c60000
+flashit (sim) ...................................... programming block 0013 at 0x00c70000
+flashit (sim) ...................................... programming block 0014 at 0x00c80000
+flashit (sim) ...................................... programming block 0015 at 0x00c90000
+flashit (sim) ...................................... programming block 0016 at 0x00ca0000
+flashit (sim) ...................................... programming block 0017 at 0x00cb0000
+flashit (sim) ...................................... programming block 0018 at 0x00cc0000
+flashit (sim) ...................................... programming block 0019 at 0x00cd0000
+flashit (sim) ...................................... programming block 0020 at 0x00ce0000
+flashit (sim) ...................................... programming block 0021 at 0x00cf0000
+flashit (sim) ...................................... programming block 0022 at 0x00d00000
+flashit (sim) ...................................... programming block 0023 at 0x00d10000
+flashit (sim) ...................................... programming block 0024 at 0x00d20000
+flashit (sim) ...................................... programming block 0025 at 0x00d30000
+flashit (sim) ...................................... programming block 0026 at 0x00d40000
+flashit (sim) ...................................... programming block 0027 at 0x00d50000
+flashit (sim) ...................................... programming block 0028 at 0x00d60000
+flashit (sim) ...................................... programming block 0029 at 0x00d70000
+flashit (sim) ...................................... programming block 0030 at 0x00d80000
+flashit (sim) ...................................... programming block 0031 at 0x00d90000
+flashit (sim) ...................................... programming block 0032 at 0x00da0000
+flashit (sim) ...................................... programming block 0033 at 0x00db0000
+flashit (sim) ...................................... programming block 0034 at 0x00dc0000
+flashit (sim) ...................................... programming block 0035 at 0x00dd0000
+flashit (sim) ...................................... programming block 0036 at 0x00de0000
+flashit (sim) ...................................... programming block 0037 at 0x00df0000
+flashit (sim) ...................................... programming block 0038 at 0x00e00000
+flashit (sim) ...................................... programming block 0039 at 0x00e10000
+flashit (sim) ...................................... programming block 0040 at 0x00e20000
+flashit (sim) ...................................... programming block 0041 at 0x00e30000
+flashit (sim) ...................................... programming block 0042 at 0x00e40000
+flashit (sim) ...................................... programming block 0043 at 0x00e50000
+flashit (sim) ...................................... programming block 0044 at 0x00e60000
+flashit (sim) ...................................... programming block 0045 at 0x00e70000
+flashit (sim) ...................................... programming block 0046 at 0x00e80000
+flashit (sim) ...................................... programming block 0047 at 0x00e90000
+flashit (sim) ...................................... programming block 0048 at 0x00ea0000
+flashit (sim) ...................................... programming block 0049 at 0x00eb0000
+flashit (sim) ...................................... programming block 0050 at 0x00ec0000
+flashit (sim) ...................................... programming block 0051 at 0x00ed0000
+flashit (sim) ...................................... programming block 0052 at 0x00ee0000
+flashit (sim) ...................................... programming block 0053 at 0x00ef0000
+flashit (sim) ...................................... programming block 0054 at 0x00f00000
+flashit (sim) ...................................... programming block 0055 at 0x00f10000
+flashit (sim) ...................................... programming block 0056 at 0x00f20000
+flashit (sim) ...................................... programming block 0057 at 0x00f30000
+flashit (sim) ...................................... programming block 0058 at 0x00f40000
+flashit (sim) ...................................... programming block 0059 at 0x00f50000
+flashit (sim) ...................................... programming block 0060 at 0x00f60000
+flashit (sim) ...................................... programming block 0061 at 0x00f70000
+flashit (sim) ...................................... programming block 0062 at 0x00f80000
+flashit (sim) ...................................... programming block 0063 at 0x00f90000
+flashit (sim) ...................................... programming block 0064 at 0x00fa0000
+flashit (sim) ...................................... programming block 0065 at 0x00fb0000
+flashit (sim) ...................................... programming block 0066 at 0x00fc0000
+flashit (sim) ...................................... programming block 0067 at 0x00fd0000
+flashit (sim) ...................................... programming block 0068 at 0x00fe0000
+flashit (sim) ...................................... programming block 0069 at 0x00ff0000
+flashit (sim) ...................................... programming block 0070 at 0x01000000
+flashit (sim) ...................................... programming block 0071 at 0x01010000
+flashit (sim) ...................................... programming block 0072 at 0x01020000
+flashit (sim) ...................................... programming block 0073 at 0x01030000
+flashit (sim) ...................................... programming block 0074 at 0x01040000
+flashit (sim) ...................................... programming block 0075 at 0x01050000
+flashit (sim) ...................................... programming block 0076 at 0x01060000
+flashit (sim) ...................................... programming block 0077 at 0x01070000
+flashit (sim) ...................................... programming block 0078 at 0x01080000
+flashit (sim) ...................................... programming block 0079 at 0x01090000
+flashit (sim) ...................................... programming block 0080 at 0x010a0000
+flashit (sim) ...................................... programming block 0081 at 0x010b0000
+flashit (sim) ...................................... programming block 0082 at 0x010c0000
+flashit (sim) ...................................... programming block 0083 at 0x010d0000
+flashit (sim) ...................................... programming block 0084 at 0x010e0000
+flashit (sim) ...................................... programming block 0085 at 0x010f0000
+flashit (sim) ...................................... programming block 0086 at 0x01100000
+flashit (sim) ...................................... programming block 0087 at 0x01110000
+flashit (sim) ...................................... programming block 0088 at 0x01120000
+flashit (sim) ...................................... programming block 0089 at 0x01130000
+flashit (sim) ...................................... programming block 0090 at 0x01140000
+flashit (sim) ...................................... programming block 0091 at 0x01150000
+flashit (sim) ...................................... programming block 0092 at 0x01160000
+flashit (sim) ...................................... programming block 0093 at 0x01170000
+flashit (sim) ...................................... programming block 0094 at 0x01180000
+flashit (sim) ...................................... programming block 0095 at 0x01190000
+flashit (sim) ...................................... programming block 0096 at 0x011a0000
+flashit (sim) ...................................... programming block 0097 at 0x011b0000
+flashit (sim) ...................................... programming block 0098 at 0x011c0000
+flashit (sim) ...................................... programming block 0099 at 0x011d0000
+flashit (sim) ...................................... programming block 0100 at 0x011e0000
+flashit (sim) ...................................... programming block 0101 at 0x011f0000
+flashit (sim) ...................................... programming block 0102 at 0x01200000
+flashit (sim) ...................................... programming block 0103 at 0x01210000
+flashit (sim) ...................................... programming block 0104 at 0x01220000
+flashit (sim) ...................................... programming block 0105 at 0x01230000
+flashit (sim) ...................................... programming block 0106 at 0x01240000
+flashit (sim) ...................................... programming block 0107 at 0x01250000
+flashit (sim) ...................................... programming block 0108 at 0x01260000
+flashit (sim) ...................................... programming block 0109 at 0x01270000
+flashit (sim) ...................................... programming block 0110 at 0x01280000
+flashit (sim) ...................................... programming block 0111 at 0x01290000
+flashit (sim) ...................................... programming block 0112 at 0x012a0000
+flashit (sim) ...................................... programming block 0113 at 0x012b0000
+flashit (sim) ...................................... programming block 0114 at 0x012c0000
+flashit (sim) ...................................... programming block 0115 at 0x012d0000
+flashit (sim) ...................................... programming block 0116 at 0x012e0000
+flashit (sim) ...................................... programming block 0117 at 0x012f0000
+flashit (sim) ...................................... programming block 0118 at 0x01300000
+flashit (sim) ...................................... programming block 0119 at 0x01310000
+flashit (sim) ...................................... programming block 0120 at 0x01320000
+flashit (sim) ...................................... programming block 0121 at 0x01330000
+flashit (sim) ...................................... programming block 0122 at 0x01340000
+flashit (sim) ...................................... programming block 0123 at 0x01350000
+flashit (sim) ...................................... programming block 0124 at 0x01360000
+flashit (sim) ...................................... programming block 0125 at 0x01370000
+flashit (sim) ...................................... programming block 0126 at 0x01380000
+flashit (sim) ...................................... programming block 0127 at 0x01390000
+flashit (sim) ...................................... programming block 0128 at 0x013a0000
+flashit (sim) ...................................... programming block 0129 at 0x013b0000
+flashit (sim) ...................................... programming block 0130 at 0x013c0000
+flashit (sim) ...................................... programming block 0131 at 0x013d0000
+flashit (sim) ...................................... programming block 0132 at 0x013e0000
+flashit (sim) ...................................... programming block 0133 at 0x013f0000
+flashit (sim) ...................................... programming block 0134 at 0x01400000
+flashit (sim) ...................................... programming block 0135 at 0x01410000
+flashit (sim) ...................................... programming block 0136 at 0x01420000
+flashit (sim) ...................................... programming block 0137 at 0x01430000
+flashit (sim) ...................................... programming block 0138 at 0x01440000
+flashit (sim) ...................................... programming block 0139 at 0x01450000
+flashit (sim) ...................................... programming block 0140 at 0x01460000
+flashit (sim) ...................................... programming block 0141 at 0x01470000
+flashit (sim) ...................................... programming block 0142 at 0x01480000
+flashit (sim) ...................................... programming block 0143 at 0x01490000
+flashit (sim) ...................................... programming block 0144 at 0x014a0000
+flashit (sim) ...................................... programming block 0145 at 0x014b0000
+flashit (sim) ...................................... programming block 0146 at 0x014c0000
+flashit (sim) ...................................... programming block 0147 at 0x014d0000
+flashit (sim) ...................................... programming block 0148 at 0x014e0000
+flashit (sim) ...................................... programming block 0149 at 0x014f0000
+flashit (sim) ...................................... programming block 0150 at 0x01500000
+flashit (sim) ...................................... programming block 0151 at 0x01510000
+flashit (sim) ...................................... programming block 0152 at 0x01520000
+flashit (sim) ...................................... programming block 0153 at 0x01530000
+flashit (sim) ...................................... programming block 0154 at 0x01540000
+flashit (sim) ...................................... programming block 0155 at 0x01550000
+flashit (sim) ...................................... programming block 0156 at 0x01560000
+flashit (sim) ...................................... programming block 0157 at 0x01570000
+flashit (sim) ...................................... programming block 0158 at 0x01580000
+flashit (sim) ...................................... programming block 0159 at 0x01590000
+flashit (sim) ...................................... programming block 0160 at 0x015a0000
+flashit (sim) ...................................... programming block 0161 at 0x015b0000
+flashit (sim) ...................................... programming block 0162 at 0x015c0000
+flashit (sim) ...................................... programming block 0163 at 0x015d0000
+flashit (sim) ...................................... programming block 0164 at 0x015e0000
+flashit (sim) ...................................... programming block 0165 at 0x015f0000
+flashit (sim) ...................................... programming block 0166 at 0x01600000
+flashit (sim) ...................................... programming block 0167 at 0x01610000
+flashit (sim) ...................................... programming block 0168 at 0x01620000
+flashit (sim) ...................................... programming block 0169 at 0x01630000
+flashit (sim) ...................................... programming block 0170 at 0x01640000
+flashit (sim) ...................................... programming block 0171 at 0x01650000
+flashit (sim) ...................................... programming block 0172 at 0x01660000
+flashit (sim) ...................................... programming block 0173 at 0x01670000
+flashit (sim) ...................................... programming block 0174 at 0x01680000
+flashit (sim) ...................................... programming block 0175 at 0x01690000
+flashit (sim) ...................................... programming block 0176 at 0x016a0000
+flashit (sim) ...................................... programming block 0177 at 0x016b0000
+flashit (sim) ...................................... programming block 0178 at 0x016c0000
+flashit (sim) ...................................... programming block 0179 at 0x016d0000
+flashit (sim) ...................................... programming block 0180 at 0x016e0000
+flashit (sim) ...................................... programming block 0181 at 0x016f0000
+flashit (sim) ...................................... programming block 0182 at 0x01700000
+flashit (sim) ...................................... programming block 0183 at 0x01710000
+flashit (sim) ...................................... programming block 0184 at 0x01720000
+flashit (sim) ...................................... programming block 0185 at 0x01730000
+flashit (sim) ...................................... programming block 0186 at 0x01740000
+flashit (sim) ...................................... programming block 0187 at 0x01750000
+flashit (sim) ...................................... programming block 0188 at 0x01760000
+flashit (sim) ...................................... programming block 0189 at 0x01770000
+flashit (sim) ...................................... programming block 0190 at 0x01780000
+flashit (sim) ...................................... programming block 0191 at 0x01790000
+flashit (sim) ...................................... programming block 0192 at 0x017a0000
+flashit (sim) ...................................... programming block 0193 at 0x017b0000
+flashit (sim) ...................................... programming block 0194 at 0x017c0000
+flashit (sim) ...................................... programming block 0195 at 0x017d0000
+flashit (sim) ...................................... programming block 0196 at 0x017e0000
+flashit (sim) ...................................... programming block 0197 at 0x017f0000
+flashit (sim) ...................................... programming block 0198 at 0x01800000
+flashit (sim) ...................................... programming block 0199 at 0x01810000
+flashit (sim) ...................................... programming block 0200 at 0x01820000
+flashit (sim) ...................................... programming block 0201 at 0x01830000
+flashit (sim) ...................................... programming block 0202 at 0x01840000
+flashit (sim) ...................................... programming block 0203 at 0x01850000
+flashit (sim) ...................................... programming block 0204 at 0x01860000
+flashit (sim) ...................................... programming block 0205 at 0x01870000
+flashit (sim) ...................................... programming block 0206 at 0x01880000
+flashit (sim) ...................................... programming block 0207 at 0x01890000
+flashit (sim) ...................................... programming block 0208 at 0x018a0000
+flashit (sim) ...................................... programming block 0209 at 0x018b0000
+flashit (sim) ...................................... programming block 0210 at 0x018c0000
+flashit (sim) ...................................... programming block 0211 at 0x018d0000
+flashit (sim) ...................................... programming block 0212 at 0x018e0000
+flashit (sim) ...................................... programming block 0213 at 0x018f0000
+flashit (sim) ...................................... programming block 0214 at 0x01900000
+flashit (sim) ...................................... programming block 0215 at 0x01910000
+flashit (sim) ...................................... programming block 0216 at 0x01920000
+flashit (sim) ...................................... programming block 0217 at 0x01930000
+flashit (sim) ...................................... programming block 0218 at 0x01940000
+flashit (sim) ...................................... programming block 0219 at 0x01950000
+flashit (sim) ...................................... programming block 0220 at 0x01960000
+flashit (sim) ...................................... programming block 0221 at 0x01970000
+flashit (sim) ...................................... programming block 0222 at 0x01980000
+flashit (sim) ...................................... programming block 0223 at 0x01990000
+flashit (sim) ...................................... programming block 0224 at 0x019a0000
+flashit (sim) ...................................... programming block 0225 at 0x019b0000
+flashit (sim) ...................................... programming block 0226 at 0x019c0000
+flashit (sim) ...................................... programming block 0227 at 0x019d0000
+flashit (sim) ...................................... programming block 0228 at 0x019e0000
+flashit (sim) ...................................... programming block 0229 at 0x019f0000
+flashit (sim) ...................................... programming block 0230 at 0x01a00000
+flashit (sim) ...................................... programming block 0231 at 0x01a10000
+flashit (sim) ...................................... programming block 0232 at 0x01a20000
+flashit (sim) ...................................... programming block 0233 at 0x01a30000
+flashit (sim) ...................................... programming block 0234 at 0x01a40000
+flashit (sim) ...................................... programming block 0235 at 0x01a50000
+flashit (sim) ...................................... programming block 0236 at 0x01a60000
+flashit (sim) ...................................... programming block 0237 at 0x01a70000
+flashit (sim) ...................................... programming block 0238 at 0x01a80000
+flashit (sim) ...................................... programming block 0239 at 0x01a90000
+flashit (sim) ...................................... programming block 0240 at 0x01aa0000
+flashit (sim) ...................................... programming block 0241 at 0x01ab0000
+flashit (sim) ...................................... programming block 0242 at 0x01ac0000
+flashit (sim) ...................................... programming block 0243 at 0x01ad0000
+
+OK: Flash checked and valid
+ 1 image type=1(IPL     ) 000000 len (262144)
+ 2 image type=2(IFS     ) 040000 len (8126464)
+ 3 image type=2(IFS     ) ba0000 len (15926812)
+ 4 image type=3(EFS     ) f00000 len (1048576)
+Saving RCC flash to SD /backup/logs/
+Duration ~3 minutes.
+Please wait... -> done :-)
+--- Found /net/mmx/fs/sda0/patches/addFec/MHI2/SK/ER/addFecs.txt
+    Adding following FECs:
+00030000
+00040100
+00050000
+00060100
+00060200
+00060300
+00060400
+00060800
+00060900
+00070200
+00070400
+08300008
+--- Train: MHI2_ER_SKG13_P4526
+
+--- Using /net/rcc/mnt/efs-persist/FEC/FecContainer.fec
+
+--- Invalid FecContainer.fec. Generating a new one...
+--- Existing FecContainer parsed
+--- AddedFecs.tmp is generated.
+--- FecContainer.fec is generated.
+--- Copying /tmp/FecContainer.fec to /net/rcc/mnt/efs-persist/FEC/ -> done :-)
+/usr/bin/sha1sum: /net/rcc/mnt/efs-persist/FEC/ExceptionList.txt: No such file or directory
+--- Checking if stock EL is installed
+-- Custom EL found - (sha1=)
+    Copy stock EL back to unit -> done :-)
+--- EL is restored
+
+MMX-flash---->
+Reboot Unit...
+Unit is rebooting now...

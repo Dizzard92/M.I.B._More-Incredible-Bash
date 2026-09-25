@@ -1,0 +1,48 @@
+M.I.B. - More Incredible Bash V3.7.3 "long time ago..."
+
+NOTE: NEVER interrupt the process with -Back- button or removing SD Card!!!
+CAUTION: Ensure that a external power is connected to the car on during any
+flash or programming process! Power failure during flasing/programming will
+brick your unit! - All you do and use at your own risk!
+
+
+MMX-navon---->
+Navigation is activated now
+Nav region selected: 1
+long coding: LC byte_3_Country_Navigation changed
+SDS Region Flag
+LC byte_24_Navigation_System
+enable Navigation in variant_2
+set variant_1
+MMX-navon---->
+---- Read original Variant_1 from unit
+---- Variant_1: FM2-M-NRH-EU
+---- Read original Variant_2 from unit
+---- Variant_2: FM2-M-NRH-EU-SK-MQB
+Reading Variant_2 from EEPROM...
+Reading Unit Class from EEPROM...
+Reading Feature bits from EEPROM...
+Reading Region from EEPROM...
+Type unknown
+Region unknown
+Error occured during creation of Variant_1
+Check messages above
+No changes to Variant_1 will be applied
+
+MMX-setvariant---->
+---- Read original Variant_1 from unit
+---- Variant_1: FM2-M-NRH-EU
+---- Read original Variant_2 from unit
+---- Variant_2: FM2-M-NRH-EU-SK-MQB
+Reading Variant_2 from EEPROM...
+Reading Unit Class from EEPROM...
+Reading Feature bits from EEPROM...
+Reading Region from EEPROM...
+Type unknown
+Region unknown
+Error occured during creation of Variant_1
+Check messages above
+No changes to Variant_1 will be applied
+
+
+All done! now you can go back...

@@ -1,0 +1,12 @@
+Using SD1...
+
+ifs-root-stage2.ifs offset: 0x00ba0000
+ifs-root-stage2.ifs size: 1C06F300
+search SIMFAZIT-0000-000000001 Backup File MU1440-ifs-root-part2-0x00ba0000.ifs
+
+No Flashfiles there!
+
+Please check if unit is already patched.
+Patch can only be applied to stock Firmware.
+
+You can go back now...

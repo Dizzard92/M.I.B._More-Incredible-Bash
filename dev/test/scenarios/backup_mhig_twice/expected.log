@@ -1,0 +1,148 @@
+ __  __     ___           ___  
+|  \/  |   |_ _|         | _ ) 
+| |\/| |    | |          | _ \ 
+|_|  |_|ore|___|ncredible|___/ash - V3.7.3 "long time ago..."
+______________________________________________________________________
+
+NOT FOR COMMERCIAL USE - IF YOU BOUGHT THIS YOU GOT RIPPED OFF
+
+Logging_MU1553-MHIG_EU_AU_K1553-SIMFAZIT-0000-000000002:
+PN: 4M0035043A - HW Number: H13
+Metainfo2 Variant (Variant2): FMU-H-EU-AU
+EEPROM Variant (Variant1): MHIG-EU-AU
+Parameter set part number: 4M003504301
+Coding: 01157600000000000000000000000000000000000000000000
+Car Model: Audi e-tron (GEN) 
+VIN MIB: WAUZZZSIMULATED02 - VIN car: -----------------
+______________________________________________________________________
+
+ls --> total 1172
+______________________________________________________________________
+
+timestamp: 2026_01_01_00_00_00----->
+
+MMX-backup---->
+ifs-root-stage2.ifs offset: 0x00ba0000
+ifs-root-stage2.ifs size: D41B3F00
+Found SIMFAZIT-0000-000000002 backup, will check if all complete...
+Doing standard backup
+It will take about 5 minutes to complete.
+Please wait...
+Version info.....cp: cannot stat '/net/mmx/mnt/app/eso/hmi/splashscreen/StartupImageConfig.txt': No such file or directory
+
+timestamp: 2026_01_01_00_00_00----->
+
+MMX-allversions---->
+cat: /net/mmx/mnt/app/eso/hmi/lsd/lang_hmi_builtin.config: No such file or directory
+cat: /net/mmx/net/rcc/dev/shmem/version.txt: No such file or directory
+cat: /net/mmx/mnt/system/etc/project.txt: No such file or directory
+head: cannot open '/net/mmx/mnt/app/img_ver.txt' for reading: No such file or directory
+cat: /net/mmx/mnt/app/version_info.txt: No such file or directory
+cat: /net/mmx/mnt/app/version_info.txt: No such file or directory
+cat: /net/mmx/mnt/app/version_info.txt: No such file or directory
+cat: /net/mmx/mnt/app/version_info.txt: No such file or directory
+cat: /net/mmx/mnt/app/version_info.txt: No such file or directory
+cat: /net/mmx/mnt/app/version_info.txt: No such file or directory
+cat: /net/mmx/mnt/app/version_info.txt: No such file or directory
+cat: /net/mmx/mnt/app/version_info.txt: No such file or directory
+ls: cannot access '/net/mmx/mnt/app/speech/hmi/??_??': No such file or directory
+grep: /net/mmx/mnt/app/version_info.txt: No such file or directory
+grep: /net/mmx/mnt/app/version_info.txt: No such file or directory
+grep: /net/mmx/mnt/app/version_info.txt: No such file or directory
+E: /net/mmx/fs/sda0/apps/allversions[485]: cd: /net/mmx/tmp: No such file or directory
+cat: /net/mmx/dev/nvsku/bom: No such file or directory
+cat: /net/mmx/dev/nvsku/project: No such file or directory
+cat: /net/mmx/dev/nvsku/sku: No such file or directory
+cat: /net/mmx/dev/nvsku/rev: No such file or directory
+cat: /net/mmx/dev/nvsku/serial_num: No such file or directory
+ -> done :-)
+FEC folders......cp: invalid option -- 'c'
+Try 'cp --help' for more information.
+cp: invalid option -- 'c'
+Try 'cp --help' for more information.
+ -> failed!
+Shadow files.....cp: cannot stat '/net/rcc/etc/shadow_rcc': No such file or directory
+cp: cannot stat '/net/rcc/etc/shadow': No such file or directory
+ -> failed!
+Partition info...cat: /net/mmx/etc/fstab: No such file or directory
+W: /net/mmx/fs/sda0/apps/backup[569]: /net/mmx/bin/fdisk: inaccessible or not found
+W: /net/mmx/fs/sda0/apps/backup[569]: /net/mmx/bin/fdisk: inaccessible or not found
+ -> done :-)
+Folder lists.....ls: cannot access '/net/rcc/bin': No such file or directory
+ls: cannot access '/net/rcc/sbin': No such file or directory
+ls: cannot access '/net/mmx/bin': No such file or directory
+ls: cannot access '/net/mmx/sbin': No such file or directory
+ls: cannot access '/net/mmx/usr/bin': No such file or directory
+ls: cannot access '/net/mmx/mnt/app/armle/bin': No such file or directory
+ls: cannot access '/net/mmx/mnt/app/armle/usr/bin': No such file or directory
+ls: cannot access '/net/mmx/mnt/media/': No such file or directory
+ls: cannot access '/net/mmx/mnt/gracenotedb/': No such file or directory
+ls: cannot access '/net/mmx/mnt/adb/': No such file or directory
+ls: cannot access '/net/mmx/mnt/navdb/': No such file or directory
+ -> done :-)
+Datasets......... -> done :-)
+EEPROM........... -> done :-)
+storage1......... -> done :-)
+storage2......... -> done :-)
+SWDL.............cp: invalid option -- 'c'
+Try 'cp --help' for more information.
+ -> failed!
+GEM jars......... -> done :-)
+lsd.jxe.......... -> done :-)
+HMI folders...... -> done :-)
+RCC OFFSET's..... -> done :-)
+RCC Flashlock.... -> done :-)
+RCC flash dump... -> done :-)
+RCC ifs-stage2...7488+0 records in
+7488+0 records out
+30670848 bytes (31 MB, 29 MiB) copied, <TIME>
+ -> done :-)
+MMX flash dump... -> done :-)
+backing up backupcp: cannot stat '/net/mmx/fs/sda0/backup/MU1553-MHIG_EU_AU_K1553-SIMFAZIT-0000-000000002/FEC/': No such file or directory
+ -> part 1 done
+ls -als /net/mmx/mnt/boardbook --> total 12
+Free space in /net/mmx/mnt/boardbook 3.0Gbytes
+
+MMX-backup-done!
+
+timestamp: 2026_01_01_00_00_00----->
+
+MMX-backup---->
+ifs-root-stage2.ifs offset: 0x00ba0000
+ifs-root-stage2.ifs size: D41B3F00
+Found SIMFAZIT-0000-000000002 backup, will check if all complete...
+Doing standard backup
+It will take about 5 minutes to complete.
+Please wait...
+Version info..... -> Backup is already there!
+FEC folders......cp: invalid option -- 'c'
+Try 'cp --help' for more information.
+cp: invalid option -- 'c'
+Try 'cp --help' for more information.
+ -> failed!
+Shadow files.....cp: cannot stat '/net/rcc/etc/shadow_rcc': No such file or directory
+cp: cannot stat '/net/rcc/etc/shadow': No such file or directory
+ -> failed!
+Partition info... -> Backup is already there!
+Folder lists..... -> Backup is already there!
+Datasets......... -> Backup is already there!
+EEPROM........... -> Backup is already there!
+storage1......... -> Backup is already there!
+storage2......... -> Backup is already there!
+SWDL.............cp: invalid option -- 'c'
+Try 'cp --help' for more information.
+ -> failed!
+GEM jars......... -> Backup is already there!
+lsd.jxe.......... -> Backup is already there!
+HMI folders...... -> done :-)
+RCC OFFSET's..... -> Backup is already there!
+RCC Flashlock.... -> Backup is already there!
+RCC flash dump... -> Backup is already there!
+RCC ifs-stage2... -> Backup is already there!
+MMX flash dump... -> Backup is already there!
+backing up backup -> Backup part 1 is already there! -> Backup part 2 is already there!
+
+ls -als /net/mmx/mnt/boardbook --> total 12
+Free space in /net/mmx/mnt/boardbook 3.0Gbytes
+
+MMX-backup-done!

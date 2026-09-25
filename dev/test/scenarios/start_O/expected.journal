@@ -1,0 +1,3 @@
+mount	-uw	/net/mmx/fs/sda0
+modifyE2P	w	3A1	49	42
+mib2_ioc_flash	reboot

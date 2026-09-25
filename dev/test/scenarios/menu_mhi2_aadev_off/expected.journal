@@ -1,0 +1,5 @@
+mount	-uw	/net/mmx/fs/sda0
+mount	-uw	/net/mmx/fs/sda0/
+mount	-ur	/net/mmx/fs/sda0/
+mount	-uw	/net/mmx/fs/sda0/
+mount	-ur	/net/mmx/fs/sda0/

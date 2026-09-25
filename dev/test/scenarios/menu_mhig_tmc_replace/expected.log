@@ -1,0 +1,58 @@
+ __  __     ___           ___  
+|  \/  |   |_ _|         | _ ) 
+| |\/| |    | |          | _ \ 
+|_|  |_|ore|___|ncredible|___/ash - V3.7.3 "long time ago..."
+______________________________________________________________________
+
+NOT FOR COMMERCIAL USE - IF YOU BOUGHT THIS YOU GOT RIPPED OFF
+
+Logging_MU1553-MHIG_EU_AU_K1553-SIMFAZIT-0000-000000002:
+PN: 4M0035043A - HW Number: H13
+Metainfo2 Variant (Variant2): FMU-H-EU-AU
+EEPROM Variant (Variant1): MHIG-EU-AU
+Parameter set part number: 4M003504301
+Coding: 01157600000000000000000000000000000000000000000000
+Car Model: Audi e-tron (GEN) 
+VIN MIB: WAUZZZSIMULATED02 - VIN car: -----------------
+______________________________________________________________________
+
+ls --> total 1172
+______________________________________________________________________
+
+timestamp: 2026_01_01_00_00_00----->
+
+MMX-edittmc---->
+--- ls folder content
+--- Backup tmc files to unit
+cp: cannot stat '/net/mmx/mnt/app/navigation/resources/app/au/asia/tti/paytmc.json': No such file or directory
+cp: cannot stat '/net/mmx/mnt/app/navigation/resources/app/au/asia/tti/paytmc_aus.json': No such file or directory
+cp: cannot stat '/net/mmx/mnt/app/navigation/resources/app/au/asia/version-cfg.txt': No such file or directory
+--- Backup done.
+--- Adjusting version-cfg.txt version - 11.30.9876
+--- Copy custom TMC files to unit
+cp: cannot create regular file '/net/mmx/mnt/app/navigation/resources/app/au/asia/tti/paytmc.json': No such file or directory
+cp: cannot create regular file '/net/mmx/mnt/app/navigation/resources/app/au/aus/tti/paytmc.json': No such file or directory
+cp: cannot create regular file '/net/mmx/mnt/app/navigation/resources/app/au/il/tti/paytmc.json': No such file or directory
+cp: cannot create regular file '/net/mmx/mnt/app/navigation/resources/app/au/india/tti/paytmc.json': No such file or directory
+cp: cannot create regular file '/net/mmx/mnt/app/navigation/resources/app/au/meast/tti/paytmc.json': No such file or directory
+cp: cannot create regular file '/net/mmx/mnt/app/navigation/resources/app/au/msa/tti/paytmc.json': No such file or directory
+cp: cannot create regular file '/net/mmx/mnt/app/navigation/resources/app/au/msa2/tti/paytmc.json': No such file or directory
+cp: cannot create regular file '/net/mmx/mnt/app/navigation/resources/app/au/neast/tti/paytmc.json': No such file or directory
+cp: cannot create regular file '/net/mmx/mnt/app/navigation/resources/app/au/za/tti/paytmc.json': No such file or directory
+cp: cannot create regular file '/net/mmx/mnt/app/navigation/resources/app/au/asia/tti/paytmc_aus.json': No such file or directory
+cp: cannot create regular file '/net/mmx/mnt/app/navigation/resources/app/au/aus/tti/paytmc_aus.json': No such file or directory
+cp: cannot create regular file '/net/mmx/mnt/app/navigation/resources/app/au/il/tti/paytmc_aus.json': No such file or directory
+cp: cannot create regular file '/net/mmx/mnt/app/navigation/resources/app/au/india/tti/paytmc_aus.json': No such file or directory
+cp: cannot create regular file '/net/mmx/mnt/app/navigation/resources/app/au/meast/tti/paytmc_aus.json': No such file or directory
+cp: cannot create regular file '/net/mmx/mnt/app/navigation/resources/app/au/msa/tti/paytmc_aus.json': No such file or directory
+cp: cannot create regular file '/net/mmx/mnt/app/navigation/resources/app/au/msa2/tti/paytmc_aus.json': No such file or directory
+cp: cannot create regular file '/net/mmx/mnt/app/navigation/resources/app/au/neast/tti/paytmc_aus.json': No such file or directory
+cp: cannot create regular file '/net/mmx/mnt/app/navigation/resources/app/au/za/tti/paytmc_aus.json': No such file or directory
+
+MMX-edittmc---->
+Reboot Unit...
+Unit is rebooting now...
+
+Buttons will stop working now
+Screen might turn off
+Reboot will take ~60s

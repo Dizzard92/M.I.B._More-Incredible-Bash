@@ -1,0 +1,4 @@
+mount	-uw	/net/mmx/fs/sda0
+updatePersistence	-key	3221422082	-ns	0	-type	b	-value	0600000000000000000000000000000000000000000000000000000077E7
+updatePersistence	-key	1	-ns	0	-type	b	-value	0
+slay	-f	j9

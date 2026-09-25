@@ -1,0 +1,50 @@
+Using SD1...
+
+
+MMX-flash---->
+ifs-root-stage2.ifs offset: 0x00ba0000
+ifs-root-stage2.ifs size: 2406F300
+Found SIMFAZIT-0000-000000001 backup, will check if all complete...
+
+[31mDoing standard backup
+It will take about 5 minutes to complete.
+Please wait...
+
+[36mVersion info..... -> done :-)
+FEC folders...... -> failed!
+Shadow files..... -> failed!
+Partition info... -> done :-)
+Folder lists..... -> done :-)
+Datasets......... -> done :-)
+EEPROM........... -> done :-)
+storage1......... -> done :-)
+storage2......... -> done :-)
+SWDL............. -> failed!
+GEM jars......... -> done :-)
+lsd.jxe.......... -> done :-)
+HMI folders...... -> done :-)
+RCC OFFSET's..... -> done :-)
+RCC Flashlock.... -> done :-)
+RCC flash dump... -> done :-)
+RCC ifs-stage2... -> done :-)
+MMX flash dump... -> done :-)
+backing up backup
+ -> part 1 done -> part 2 done :-)
+[00;00m
+
+MHI2_ER_SKG13_P4526 MU1440
+In case of errors, please check Log file on SD card.
+
+
+MMX-flash-done!
+Train: MHI2_ER_SKG13_P4526
+OK: Patch folder /net/mmx/fs/sda0/patches/MHI2_ER_SKG13_P4526_MU1440_PATCH found on SD card
+
+File MU1440-ifs-root-part2-0x00ba0000-1C06F300.ifs found in patch folder
+File MU1440-ifs-root-part2-0x00ba0000-2406F300.ifs needed to patch this unit
+
+Unit is already patched!
+Header size on unit - 2406F300 - matches patch file - 2406F300 -
+No need to patch unit again!
+
+You can go back now...
