@@ -10,3 +10,8 @@ backup/MU*
 *.ifs
 .DS_Store
 
+
+# Developer tooling output
+dist/
+dev/.tools/
+dev/sim/out/

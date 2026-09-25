@@ -15,3 +15,9 @@
 */mod/gem/* -text -diff
 *.jar -text -diff
 *.gca -text -diff
+
+# Developer material is not part of the SD-card package (git archive / dev/tools/package.sh)
+/dev export-ignore
+/tests export-ignore
+/.agent export-ignore
+/.github export-ignore
