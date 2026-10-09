@@ -1,0 +1,46 @@
+M.I.B. - More Incredible Bash V3.8.0 "CarPlay Maps VC omonob (QCDWJ) Edition"
+NOT FOR COMMERCIAL USE - IF YOU BOUGHT THIS YOU GOT RIPPED OFF
+
+CarPlay Maps VC diagnostics 2026_01_01_00_00_00
+M.I.B. V3.8.0 "CarPlay Maps VC omonob (QCDWJ) Edition"
+lsd.jxe size: 55712574 (MU1447)
+
+== Installation
+Version: V7.2.2-PLAINTEXT-TOOLBOX-1
+Profile: MU1447/790
+CLUSTER_AUTO_ENABLE: yes
+dio_manager: CarPlay Maps VC wrapper
+Control jar on unit: 8431 bytes, on SD: 8431 bytes
+lsd.sh mentions of the control jar: 1 (expected 1)
+  2:BOOTCLASSPATH=-Xbootclasspath/a:/ifs/lsd.jxe:/ifs/jre/lib/charconv.zip
+  3:BOOTCLASSPATH="$BOOTCLASSPATH -Xbootclasspath/p:$BASE_DIR/lsd/jars/CarPlayClusterControls.jar:$BASE_DIR/lsd/jars/NavActiveIgnore.jar"
+
+== Processes
+dio_manager: running
+carplay-cluster-supervisor: running
+altscreen-most-bridge: running
+carplay-pairing-helper: running
+
+== core.so events (carplaymaps-video.log)
+core.so loaded:          1
+cluster video connected: 1
+CarPlay session saved:   1
+port 7032 ready/failed:  1/0
+zoom/map commands sent:  2
+commands w/o session:    0
+unknown commands:        0
+iPhone answers:          2
+Last map control lines:
+  t_us=2000 pid=40977 event=map-control-loopback-ready value1=7032 value2=0 value3=0
+  t_us=9000 pid=40977 event=map-control-session-remembered ptr=0x1a2b3c status=0 (0x00000000)
+  t_us=20000 pid=40977 event=map-control-command-request ptr=0x1a2b3c status=0 (0x00000000)
+  t_us=20100 pid=40977 event=alt-command-completion-changeMapZoomLevel ptr=0x0 status=0 (0x00000000)
+  t_us=30000 pid=40977 event=map-control-command-request ptr=0x1a2b3c status=0 (0x00000000)
+  t_us=30100 pid=40977 event=alt-command-completion-changeMapZoomLevel ptr=0x0 status=0 (0x00000000)
+
+== Verdict
+2 command(s) were sent to the iPhone. If the map still does not
+zoom, check the iPhone answers above and the navigation app.
+
+Saved to: backup/carplaymaps-diag/2026_01_01_00_00_00
+CPMAP_DIAG_OK

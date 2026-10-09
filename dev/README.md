@@ -21,6 +21,9 @@ themselves.
   compared against `dev/lint/shellcheck-baseline.txt`. Any new finding fails the run.
   When findings go down, run `dev/tools/lint.sh --update-baseline` and commit the baseline.
 - `dev/tools/shell-sources.sh` lists the files that lint and CI treat as head-unit shell code.
+- `dev/tools/re/` holds small reverse-engineering helpers used for the CarPlay Maps VC analysis
+  (`jdis.py` for Java classes, `armdis.py` for ARM libraries, `j9const.py` for constants in
+  `lsd.jxe`); see `.agent/execplans/cpmap-seat-zoom.md`.
 - `dev/tools/package.sh [commit]` builds `dist/MIB-<version>.zip`. It fails if developer
   files would be packaged or if required files are missing.
 

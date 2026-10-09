@@ -590,6 +590,15 @@ script
     value   sys 1 0x0100 "/net/mmx/fs/sda0/esd/scripts/cpmap_status.sh"
     label   "Show CarPlay Maps VC status"
 
+script
+    value   sys 1 0x0100 "/net/mmx/fs/sda0/esd/scripts/cpmap_diag.sh"
+    label   "Save CarPlay Maps VC diagnostics to SD"
+
+keyValue
+    value   String sys 0x00000000 0
+    label   "Before: connect iPhone by cable, show map in VC, press up/down"
+    poll    0
+
 keyValue
     value   String sys 0x00000000 0
     label   "___________________________________________________________________________"

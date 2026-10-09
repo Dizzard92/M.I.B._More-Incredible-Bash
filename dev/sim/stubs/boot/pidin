@@ -1,0 +1,11 @@
+#!/bin/bash
+# QNX "pidin": process list. A scenario can provide its own list in /sim/pidin.txt
+# (setup.sh writes "$SIM_OUT/sim/pidin.txt"); otherwise a minimal fixed list is printed.
+if [ -f /sim/pidin.txt ]; then
+	cat /sim/pidin.txt
+	exit 0
+fi
+echo "     pid Arguments"
+echo "       1 procnto-instr"
+echo "   40977 /mnt/app/eso/bin/apps/dio_manager"
+exit 0
