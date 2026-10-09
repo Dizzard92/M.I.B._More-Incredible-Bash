@@ -164,7 +164,7 @@ for f in "$out"/sd/apps/sbin/* "$out"/sd/apps/sbin/beta/*; do
 	[ -f "$f" ] || continue
 	name="$(basename "$f")"
 	case "$name" in
-		sed|xxd|dd|cut|tee|gzip|sha1sum) target="/usr/bin/$name" ;;
+		sed|xxd|dd|cut|tee|gzip|sha1sum|awk) target="/usr/bin/$name" ;;
 		bc) target="/opt/sim/bin/bc" ;;
 		flashit|flashlock|flashunlock|pc|dumb_persistence_reader|updatePersistence|patcher|rdiff|micropython)
 			target="/sim/stubs/$name" ;;
